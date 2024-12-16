@@ -8,9 +8,9 @@ from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 
-
-# Globale Pfade für die Modelle
-MODELS_DIR = Path("../models")  # Ordner für gespeicherte Modelle
+# Absoluter Pfad zum 'models/'-Ordner
+PROJECT_ROOT = Path(__file__).resolve().parents[1]  # Gehe zwei Ebenen nach oben (vom utils-Skript)
+MODELS_DIR = PROJECT_ROOT / "models"
 
 # Sicherstellen, dass der Ordner existiert
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
