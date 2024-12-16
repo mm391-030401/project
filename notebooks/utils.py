@@ -133,3 +133,13 @@ def load_results(model_name):
     file_path = MODELS_DIR / f"{model_name}_results.json"
     with open(file_path, 'r') as f:
         return json.load(f)
+    
+def get_models_dir():
+    """
+    Gibt den absoluten Pfad zum models-Ordner zurück.
+    
+    Returns:
+        str: Der absolute Pfad des models-Ordners.
+    """
+    return str(MODELS_DIR)
+
