@@ -4,13 +4,15 @@ import json
 from joblib import dump
 from joblib import load
 from pathlib import Path
+import os
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 
 # Absoluter Pfad zum 'models/'-Ordner
-PROJECT_ROOT = Path(__file__).resolve().parents[1]  # Gehe zwei Ebenen nach oben (vom utils-Skript)
-MODELS_DIR = PROJECT_ROOT / "models"
+NOTEBOOKS_DIR = Path(os.getcwd())  # Aktuelles Arbeitsverzeichnis
+PROJECT_DIR = NOTEBOOKS_DIR.parent
+MODELS_DIR = PROJECT_DIR / "models"  # models-Ordner relativ zur Wurzel
 
 # Sicherstellen, dass der Ordner existiert
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
