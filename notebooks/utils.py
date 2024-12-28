@@ -41,7 +41,7 @@ def highlight_rows(row, first_indices, last_indices, color1, color2):
         return [''] * len(row)
 
 def create_highlight_func(df, color1, color2):
-    """
+    '''
     Erstellt eine Funktion zum Einfärben von DataFrame-Zellen mit angegebenen Farben.
     Es werden die ersten und die letzten Zeilen gleich eingefärbt.
 
@@ -52,13 +52,11 @@ def create_highlight_func(df, color1, color2):
 
     Returns:
     function: Eine Funktion, die auf eine pd.Series angewendet werden kann.
-    """
+    '''
     first_indices = df.index[:2]
     last_indices = df.index[-2:]
 
     return partial(highlight_rows, first_indices=first_indices, last_indices=last_indices, color1=color1, color2=color2)
-
-
     
 def save_model(model, model_name):
     """
