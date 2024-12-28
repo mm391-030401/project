@@ -17,27 +17,25 @@ MODELS_DIR = PROJECT_DIR / "models"  # models-Ordner relativ zur Wurzel
 # Sicherstellen, dass der Ordner existiert
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
-def highlight_rows(row, color1, color2, df):
+def highlight_rows(row, first_indices, last_indices, color1, color2):
     '''
     Funktion zum Einfärben von DataFrame-Zellen mit angegebenen Farben.
-    Es werden die ersten beiden Zeilen und die letzten beide Zeilen gleich eingefärbt.
+    Es werden die ersten Zeilen und die letzten  Zeilen gleich eingefärbt.
 
     Args:
     row (pd.Series): Die Zeile des DataFrames, die eingefärbt werden soll.
-    color1 (str): Hex-Code der Farbe für die ersten beiden Zeilen.
-    color2 (str): Hex-Code der Farbe für die letzten beiden Zeilen.
-    df (pd.DataFrame): Der DataFrame, dessen Zeilen eingefärbt werden sollen.
+    first_indices (list): Indizes der ersten Zeilen.
+    last_indices (list): Indizes der letzten Zeilen.
+    color1 (str): Hex-Code der Farbe für die ersten Zeilen.
+    color2 (str): Hex-Code der Farbe für die letzten Zeilen.
 
     Returns:
     pd.Series: Die Zeile des DataFrames mit den angewendeten Stil-Strings.
     '''
-    # Einfärben der ersten beiden Zeilen
-    if row.name in df.index[:2]:
+    if row.name in first_indices:
         return ['background-color: {}'.format(color1)] * len(row)
-    # Einfärben der letzten beiden Zeilen
-    elif row.name in df.index[-2:]:
+    elif row.name in last_indices:
         return ['background-color: {}'.format(color2)] * len(row)
-    # Keine Einfärbung für andere Zeilen
     else:
         return [''] * len(row)
 
