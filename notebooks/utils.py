@@ -8,6 +8,7 @@ import os
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
+from functools import partial
 
 # Absoluter Pfad zum 'models/'-Ordner
 NOTEBOOKS_DIR = Path(os.getcwd())  # Aktuelles Arbeitsverzeichnis
@@ -20,7 +21,7 @@ MODELS_DIR.mkdir(parents=True, exist_ok=True)
 def highlight_rows(row, first_indices, last_indices, color1, color2):
     '''
     Funktion zum Einfärben von DataFrame-Zellen mit angegebenen Farben.
-    Es werden die ersten Zeilen und die letzten  Zeilen gleich eingefärbt.
+    Es werden die ersten Zeilen und die letzten Zeilen gleich eingefärbt.
 
     Args:
     row (pd.Series): Die Zeile des DataFrames, die eingefärbt werden soll.
@@ -38,6 +39,25 @@ def highlight_rows(row, first_indices, last_indices, color1, color2):
         return ['background-color: {}'.format(color2)] * len(row)
     else:
         return [''] * len(row)
+
+def create_highlight_func(df, color1, color2):
+    """
+    Erstellt eine Funktion zum Einfärben von DataFrame-Zellen mit angegebenen Farben.
+    Es werden die ersten und die letzten Zeilen gleich eingefärbt.
+
+    Args:
+    df (pd.DataFrame): Der DataFrame, dessen Zeilen eingefärbt werden sollen.
+    color1 (str): Hex-Code der Farbe für die ersten Zeilen.
+    color2 (str): Hex-Code der Farbe für die letzten Zeilen.
+
+    Returns:
+    function: Eine Funktion, die auf eine pd.Series angewendet werden kann.
+    """
+    first_indices = df.index[:2]
+    last_indices = df.index[-2:]
+
+    return partial(highlight_rows, first_indices=first_indices, last_indices=last_indices, color1=color1, color2=color2)
+
 
     
 def save_model(model, model_name):
