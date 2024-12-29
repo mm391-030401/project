@@ -9,6 +9,8 @@ from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 from functools import partial
+import altair as alt
+import pandas as pd
 
 # Absoluter Pfad zum 'models/'-Ordner
 NOTEBOOKS_DIR = Path(os.getcwd())  # Aktuelles Arbeitsverzeichnis
@@ -57,7 +59,89 @@ def create_highlight_func(df, color1, color2):
     last_indices = df.index[-2:]
 
     return partial(highlight_rows, first_indices=first_indices, last_indices=last_indices, color1=color1, color2=color2)
+
+def calc_corr(df, y, x, method='spearman'):
+    '''
+    Berechnet die Korrelation zwischen der Zielvariablen (y) und einer angegebenen Variable
+    unter Verwendung der angegebenen Methode (z.B. 'spearman', 'pearson', etc.).
+
+    Args:
+    df (pandas.DataFrame): Der DataFrame, der die Daten enthält.
+    y (str): Der Name der Zielvariablen.
+    vx (str): Der Name der anderen Variable, mit der die Korrelation berechnet werden soll.
+    method (str, optional): Die Methode zur Berechnung der Korrelation. Standardwert ist 'spearman'.
+                            Mögliche Werte sind 'spearman', 'pearson' und andere Methoden, die von pandas .corr() unterstützt werden.
     
+    Returns:
+    None: Gibt die Korrelation gerundet auf zwei Dezimalstellen aus.
+    '''
+    # Berechnung der Korrelation mit der angegebenen Methode
+    korr = df[[y, x]].corr(method=method).iloc[0, 1].round(2)
+    
+    # Ausgabe der Korrelation
+    print(f'Korrelation zwischen {y} und {x} beträgt: {korr}')
+
+import altair as alt
+
+def create_boxplot_with_count(df, y, x, color1, x_type='N', x_limits=None):
+    '''
+    Erstellt ein Boxplot und eine Count-Textanzeige für eine angegebene Variable in einem DataFrame.
+    
+    Args:
+    df (pandas.DataFrame): Der DataFrame, der die Daten enthält.
+    y (str): Der Name der Zielvariablen (z.B. eine kontinuierliche Variable).
+    x (str): Der Name der Variablen für die x-Achse (z.B. 'monate_seit_existenz_kohorte').
+    color1 (str): Die Farbe für das Diagramm.
+    x_type (str, optional): Der Typ der x-Achse. Standard ist 'N' (nominal). 
+                            Verwende 'Q' für quantitative oder 'O' für ordinale Variablen.
+    x_limits (tuple, optional): Ein Tupel mit zwei Werten, das die unteren und oberen Grenzen der x-Achse definiert.
+                                 Beispiel: (0, 24). Standardmäßig keine Begrenzung.
+    
+    Returns:
+    alt.Chart: Ein kombiniertes Chart mit Boxplot und Count-Daten.
+    '''
+    
+    # Spezifikation der x-Achse basierend auf dem angegebenen x_type
+    x_spec = f'{x}:{x_type}'  # Standard ist :N, aber du kannst auch :Q oder :O verwenden
+    
+    # Wenn x_limits angegeben sind, wende sie auf die x-Achse an
+    if x_limits is not None:
+        x_axis = alt.X(x_spec, title=x, scale=alt.Scale(domain=x_limits))
+    else:
+        x_axis = alt.X(x_spec, title=x)
+    
+    # Boxplot
+    boxplot_chart = alt.Chart(df).mark_boxplot(color=color1).encode(
+        x=x_axis,
+        y=alt.Y(y, title=y),
+    ).properties(
+        width=1000,
+        height=400,
+        title=f'Boxplot von {y} über {x}'
+    )
+
+    # Count-Daten
+    count_data = df.groupby(x).size().reset_index(name='count')
+
+    # Count als Text anzeigen
+    count_chart = alt.Chart(count_data).mark_text(dy=-10, color=color1, fontWeight='bold', fontSize=13).encode(
+        x=x_axis,
+        y=alt.Y(value=+300),  # Position im Diagramm manuell festgelegt
+        text='count:Q',
+        tooltip=[  # Tooltip als Legendeersatz
+            alt.Tooltip('count:Q', title='Anzahl der Werte innerhalb des Boxplots'),
+        ]
+    ).properties(
+        width=1000,
+        height=400
+    )
+
+    # Kombinieren der Charts
+    combined_chart = boxplot_chart + count_chart
+
+    return combined_chart
+
+
 def save_model(model, model_name):
     """
     Speichert ein trainiertes Modell in einer .joblib-Datei im Ordner 'models/'.
