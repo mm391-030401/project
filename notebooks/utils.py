@@ -18,6 +18,7 @@ import pandas as pd
 from IPython.display import display
 from IPython.display import HTML
 from IPython.display import Image
+import datetime
 
 # Absoluter Pfad zum 'models/'-Ordner
 NOTEBOOKS_DIR = Path(os.getcwd())  # Aktuelles Arbeitsverzeichnis
@@ -26,6 +27,33 @@ MODELS_DIR = PROJECT_DIR / "models"  # models-Ordner relativ zur Wurzel
 
 # Sicherstellen, dass der Ordner existiert
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
+
+def format_long_text(val): 
+    """
+    Formatierte Darstellung von langen Texten in einer DataFrame-Spalte, um Zeilenumbrüche zu ermöglichen.
+
+    Diese Funktion wird in einem Styler-Objekt verwendet, um Text in Zellen, die länger als 30 Zeichen sind, so zu formatieren,
+    dass sie mit Zeilenumbrüchen angezeigt werden. Dabei wird die CSS-Eigenschaft `white-space: pre-wrap` verwendet, um den Text
+    innerhalb der Zelle umzubrechen. Zudem wird die Breite der Zelle angepasst, wenn der Text länger ist.
+
+    Args:
+        val (str): Der Textwert, der in einer DataFrame-Zelle gespeichert ist. Diese Funktion überprüft, ob der Text
+                   länger als 30 Zeichen ist, um den Text entsprechend zu formatieren.
+
+    Returns:
+        str: Eine CSS-Stilbeschreibung. Wenn der Text länger als 30 Zeichen ist, wird `white-space: pre-wrap; width: 300px;` zurückgegeben,
+              andernfalls ein leerer String, der keine Formatierung vornimmt.
+
+    Example:
+        Wenn `val = "Dies ist ein sehr langer Text, der umgebrochen werden muss."`:
+            Gibt die Funktion `white-space: pre-wrap; width: 300px;` zurück.
+        Wenn `val = "Kurzer Text"`:
+            Gibt die Funktion einen leeren String zurück (keine Formatierung).
+    """
+    if isinstance(val, str) and len(val) > 30: 
+        return 'white-space: pre-wrap; width: 300px;' 
+    else: 
+        return ''
 
 def highlight_rows(row, first_indices, last_indices, color1, color2):
     '''
@@ -148,6 +176,19 @@ def create_boxplot_with_count(df, y, x, color1, x_type='N', x_limits=None):
 
     return combined_chart
 
+def generate_model_names(start_num, num_models, regression_type):
+    model_names = []
+    
+    # Holen des aktuellen Datums und Uhrzeit im gewünschten Format
+    current_timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    
+    for i in range(num_models):
+        # Erzeuge den Modellnamen mit fortlaufender Nummer und Regressionstyp als Variable
+        model_name = f"{str(start_num + i).zfill(2)}_{current_timestamp}_{regression_type}"
+        model_names.append(model_name)
+    
+    return model_names
+
 def preprocess_data(data, y_label, features):
     '''
     Bereitet die Daten für das Modell vor, einschließlich One-Hot-Encoding.
@@ -212,14 +253,14 @@ def evaluate_model(reg, X_test, y_test):
     })
     return metrics, residuals_df
 
-def generate_summary_table(reg, features):
+def generate_summary_table(reg, X):
     '''
     Erstellt eine Tabelle mit Intercept und Koeffizienten des Modells.
-
+    
     Args:
         reg (LinearRegression): Das trainierte Modell.
-        features (list): Die Liste der Features.
-
+        X (pd.DataFrame): Die Feature-Daten (einschließlich One-Hot-Encoding).
+    
     Returns:
         pd.DataFrame: Tabelle mit Intercept und Koeffizienten.
     '''
@@ -227,10 +268,13 @@ def generate_summary_table(reg, features):
         'Name': ['Intercept'],
         'Coefficient': [reg.intercept_]
     })
+    
+    # Verwendet die Spaltennamen von X nach dem One-Hot-Encoding
     slope = pd.DataFrame({
-        'Name': features,
+        'Name': X.columns,
         'Coefficient': reg.coef_
     })
+    
     return pd.concat([intercept, slope], ignore_index=True, sort=False).round(3)
 
 def save_validation_results(df_scores, model_name):
@@ -332,49 +376,25 @@ def save_results(y_test, y_pred, model_name):
     results_df.to_csv(file_path, index=False)  # index=False entfernt den Index aus der CSV-Datei
     print(f"Ergebnisse gespeichert unter: {file_path}")
 
-def save_summary_table(reg, features, model_name):
+def save_summary_table(reg, X, model_name):
     '''
     Speichert die Zusammenfassungstabelle (Intercept und Koeffizienten) des Modells in einer CSV-Datei.
 
     Args:
         reg (LinearRegression): Das trainierte Modell.
-        features (list): Die Liste der Features.
+        X (pd.DataFrame): Die Feature-Daten (einschließlich One-Hot-Encoding).
         model_name (str): Der Name des Modells, unter dem die Datei gespeichert werden soll.
 
     Saves:
         Eine CSV-Datei im Ordner 'models/' mit den Modellkoeffizienten unter dem Namen '{model_name}_summary.csv'.
     '''
     # Generiere die Zusammenfassungstabelle
-    summary_table = generate_summary_table(reg, features)
+    summary_table = generate_summary_table(reg, X)
     
     # Speichern der Tabelle als CSV
     file_path = MODELS_DIR / f'{model_name}_summary.csv'
     summary_table.to_csv(file_path, index=False)
     print(f'Zusammenfassungstabelle gespeichert unter: {file_path}')
-
-def save_full_workflow(model, features, y_test, y_pred, model_name):
-    """
-    Führt den gesamten Speicherprozess aus:
-    1. Speichert das Modell.
-    2. Speichert die verwendeten Features.
-    3. Berechnet und speichert die Evaluierungsmesswerte.
-
-    Args:
-        model: Das trainierte Modell (z. B. sklearn-Regressor).
-        features (list): Eine Liste der Feature-Namen.
-        y_test (array-like): Die wahren Zielwerte aus dem Testdatensatz.
-        y_pred (array-like): Die vom Modell vorhergesagten Werte.
-        model_name (str): Der Name des Modells, der auch für die Dateien verwendet wird.
-    
-    Saves:
-        - Eine .joblib-Datei im Ordner 'models/'.
-        - Eine JSON-Datei für die Features im Ordner 'models/'.
-        - Eine JSON-Datei für die Evaluierungsmesswerte im Ordner 'models/'.
-    """
-    save_model(model, model_name)
-    save_features(features, model_name)
-    save_results(y_test, y_pred, model_name)
-    print(f"Gesamter Workflow für {model_name} abgeschlossen.")
 
 def load_model(model_name):
     """
@@ -500,7 +520,7 @@ def full_pipeline(data, y_label, features, model_name):
     metrics, residuals_df = evaluate_model(reg, X_test, y_test)
 
     # Summary Table
-    summary_table = generate_summary_table(reg, features)
+    summary_table = generate_summary_table(reg, X)
 
     # Save Outputs
     save_model(reg, model_name)
@@ -508,7 +528,7 @@ def full_pipeline(data, y_label, features, model_name):
     save_results(y_test, reg.predict(X_test), model_name)
     save_validation_results(df_scores, model_name)
     save_residual_plot(residuals_df, model_name)
-    save_summary_table(reg, features, model_name)
+    save_summary_table(reg, X, model_name)
 
     # Print Summary
     print('\nModellzusammenfassung:')
