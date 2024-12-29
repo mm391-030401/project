@@ -306,7 +306,7 @@ def save_features(features, model_name):
 
 def save_results(y_test, y_pred, model_name):
     """
-    Berechnet und speichert die Evaluierungsmesswerte eines Modells in einer JSON-Datei im Ordner 'models/'.
+    Berechnet und speichert die Evaluierungsmesswerte eines Modells in einer CSV-Datei im Ordner 'models/'.
 
     Args:
         y_test (array-like): Die wahren Zielwerte aus dem Testdatensatz.
@@ -314,18 +314,43 @@ def save_results(y_test, y_pred, model_name):
         model_name (str): Der Name des Modells, der auch für die Datei verwendet wird.
     
     Saves:
-        Eine JSON-Datei im Ordner 'models/' mit den Messwerten (R², MSE, RMSE, MAE).
+        Eine CSV-Datei im Ordner 'models/' mit den Messwerten (R², MSE, RMSE, MAE).
     """
+    # Berechnung der Evaluierungsmesswerte
     results = {
-        "R_squared": r2_score(y_test, y_pred),
-        "MSE": mean_squared_error(y_test, y_pred),
-        "RMSE": mean_squared_error(y_test, y_pred, squared=False),
-        "MAE": mean_absolute_error(y_test, y_pred)
+        "R_squared": [r2_score(y_test, y_pred)],
+        "MSE": [mean_squared_error(y_test, y_pred)],
+        "RMSE": [mean_squared_error(y_test, y_pred, squared=False)],
+        "MAE": [mean_absolute_error(y_test, y_pred)]
     }
-    file_path = MODELS_DIR / f"{model_name}_results.json"
-    with open(file_path, 'w') as f:
-        json.dump(results, f)
+
+    # Umwandlung der Ergebnisse in einen DataFrame
+    results_df = pd.DataFrame(results)
+
+    # Speichern des DataFrames als CSV-Datei
+    file_path = MODELS_DIR / f"{model_name}_results.csv"
+    results_df.to_csv(file_path, index=False)  # index=False entfernt den Index aus der CSV-Datei
     print(f"Ergebnisse gespeichert unter: {file_path}")
+
+def save_summary_table(reg, features, model_name):
+    '''
+    Speichert die Zusammenfassungstabelle (Intercept und Koeffizienten) des Modells in einer CSV-Datei.
+
+    Args:
+        reg (LinearRegression): Das trainierte Modell.
+        features (list): Die Liste der Features.
+        model_name (str): Der Name des Modells, unter dem die Datei gespeichert werden soll.
+
+    Saves:
+        Eine CSV-Datei im Ordner 'models/' mit den Modellkoeffizienten unter dem Namen '{model_name}_summary.csv'.
+    '''
+    # Generiere die Zusammenfassungstabelle
+    summary_table = generate_summary_table(reg, features)
+    
+    # Speichern der Tabelle als CSV
+    file_path = MODELS_DIR / f'{model_name}_summary.csv'
+    summary_table.to_csv(file_path, index=False)
+    print(f'Zusammenfassungstabelle gespeichert unter: {file_path}')
 
 def save_full_workflow(model, features, y_test, y_pred, model_name):
     """
@@ -388,9 +413,14 @@ def load_results(model_name):
     Returns:
         dict: Ein Dictionary mit den Evaluierungsmesswerten (R², MSE, RMSE, MAE).
     """
-    file_path = MODELS_DIR / f"{model_name}_results.json"
-    with open(file_path, 'r') as f:
-        return json.load(f)
+    file_path = MODELS_DIR / f"{model_name}_results.csv"
+    
+    if os.path.exists(file_path):
+        # CSV-Datei in einen DataFrame einlesen
+        return pd.read_csv(file_path)
+    else:
+        print(f"Fehler: Die Datei für die Kreuzvalidierungsergebnisse von '{model_name}' wurde nicht gefunden.")
+        return None
     
 def load_residual_plot(model_name):
     '''
@@ -427,6 +457,25 @@ def load_validation_results(model_name):
     else:
         print(f"Fehler: Die Datei für die Kreuzvalidierungsergebnisse von '{model_name}' wurde nicht gefunden.")
         return None
+    
+def load_summary_table(model_name):
+    '''
+    Lädt die Zusammenfassungstabelle (Intercept und Koeffizienten) aus einer CSV-Datei im Ordner 'models/'.
+
+    Args:
+        model_name (str): Der Name des Modells, dessen Zusammenfassung geladen werden soll.
+
+    Returns:
+        pd.DataFrame: Ein DataFrame mit der Zusammenfassungstabelle (Intercept und Koeffizienten).
+    '''
+    file_path = MODELS_DIR / f"{model_name}_summary.csv"
+    
+    if os.path.exists(file_path):
+        # CSV-Datei in einen DataFrame einlesen
+        return pd.read_csv(file_path)
+    else:
+        print(f"Fehler: Die Datei für die Zusammenfassungstabelle von '{model_name}' wurde nicht gefunden.")
+        return None
 
 def full_pipeline(data, y_label, features, model_name):
     '''
@@ -459,6 +508,7 @@ def full_pipeline(data, y_label, features, model_name):
     save_results(y_test, reg.predict(X_test), model_name)
     save_validation_results(df_scores, model_name)
     save_residual_plot(residuals_df, model_name)
+    save_summary_table(reg, features, model_name)
 
     # Print Summary
     print('\nModellzusammenfassung:')
