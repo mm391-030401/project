@@ -8,9 +8,16 @@ import os
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score
+from sklearn.linear_model import LinearRegression
 from functools import partial
 import altair as alt
+import matplotlib.pyplot as plt
 import pandas as pd
+from IPython.display import display
+from IPython.display import HTML
+from IPython.display import Image
 
 # Absoluter Pfad zum 'models/'-Ordner
 NOTEBOOKS_DIR = Path(os.getcwd())  # Aktuelles Arbeitsverzeichnis
@@ -141,6 +148,130 @@ def create_boxplot_with_count(df, y, x, color1, x_type='N', x_limits=None):
 
     return combined_chart
 
+def preprocess_data(data, y_label, features):
+    '''
+    Bereitet die Daten für das Modell vor, einschließlich One-Hot-Encoding.
+
+    Args:
+        data (pd.DataFrame): Der ursprüngliche Datensatz.
+        y_label (str): Der Name der Zielvariable.
+        features (list): Die Liste der Features.
+
+    Returns:
+        pd.DataFrame, pd.Series: Features (X) und Zielvariable (y).
+    '''
+    model_data = data[[y_label] + features]
+    model_data = pd.get_dummies(model_data)
+    X = model_data.drop(columns=[y_label])
+    y = model_data[y_label]
+    return X, y
+
+def train_and_validate_model(X, y, cv=5):
+    '''
+    Trainiert ein Modell und führt eine Kreuzvalidierung durch.
+
+    Args:
+        X (pd.DataFrame): Feature-Daten.
+        y (pd.Series): Zielvariable.
+        cv (int): Anzahl der Folds für die Kreuzvalidierung.
+
+    Returns:
+        LinearRegression, pd.DataFrame: Das trainierte Modell und die Kreuzvalidierungsergebnisse.
+    '''
+    reg = LinearRegression()
+    scores = cross_val_score(reg, X, y, cv=cv, scoring='neg_mean_squared_error') * -1
+    df_scores = pd.DataFrame({'MSE': scores})
+    df_scores.index += 1
+    reg.fit(X, y)
+    return reg, df_scores
+
+def evaluate_model(reg, X_test, y_test):
+    '''
+    Bewertet ein Modell anhand verschiedener Metriken und erstellt Residualdaten.
+
+    Args:
+        reg (LinearRegression): Das trainierte Modell.
+        X_test (pd.DataFrame): Test-Features.
+        y_test (pd.Series): Wahre Zielwerte.
+
+    Returns:
+        dict, pd.DataFrame: Metriken und Residualdaten.
+    '''
+    y_pred = reg.predict(X_test)
+    residuals = y_test - y_pred
+    metrics = {
+        'R_squared': r2_score(y_test, y_pred),
+        'MSE': mean_squared_error(y_test, y_pred),
+        'RMSE': mean_squared_error(y_test, y_pred, squared=False),
+        'MAE': mean_absolute_error(y_test, y_pred)
+    }
+    residuals_df = pd.DataFrame({
+        'True Values': y_test,
+        'Predicted Values': y_pred,
+        'Residuals': residuals
+    })
+    return metrics, residuals_df
+
+def generate_summary_table(reg, features):
+    '''
+    Erstellt eine Tabelle mit Intercept und Koeffizienten des Modells.
+
+    Args:
+        reg (LinearRegression): Das trainierte Modell.
+        features (list): Die Liste der Features.
+
+    Returns:
+        pd.DataFrame: Tabelle mit Intercept und Koeffizienten.
+    '''
+    intercept = pd.DataFrame({
+        'Name': ['Intercept'],
+        'Coefficient': [reg.intercept_]
+    })
+    slope = pd.DataFrame({
+        'Name': features,
+        'Coefficient': reg.coef_
+    })
+    return pd.concat([intercept, slope], ignore_index=True, sort=False).round(3)
+
+def save_validation_results(df_scores, model_name):
+    '''
+    Speichert die Kreuzvalidierungsergebnisse in einer CSV-Datei.
+
+    Args:
+        df_scores (pd.DataFrame): Kreuzvalidierungsergebnisse.
+        model_name (str): Modellname für die Datei.
+
+    Saves:
+        Eine CSV-Datei im Ordner 'models/' mit den Kreuzvalidierungsergebnissen unter dem Namen '{model_name}_validation.csv'.
+    '''
+    file_path = MODELS_DIR / f'{model_name}_validation.csv'
+    df_scores.to_csv(file_path, index=False)
+    print(f'Kreuzvalidierungsergebnisse gespeichert unter: {file_path}')
+
+def save_residual_plot(residuals_df, model_name):
+    '''
+    Erstellt und speichert einen Residualplot mit Matplotlib.
+
+    Args:
+        residuals_df (pd.DataFrame): Residualdaten.
+        model_name (str): Modellname für die Datei.
+
+    Saves:
+        Eine PNG-Datei im Ordner 'models/' mit dem Residualplot unter dem Namen '{model_name}_residual_plot.png'.
+    '''
+    plt.figure(figsize=(8, 6))
+    plt.scatter(residuals_df['Predicted Values'], residuals_df['Residuals'], color='#06507F')
+    plt.title(f'Residual Plot für Modell: {model_name}')
+    plt.xlabel('Predicted Values')
+    plt.ylabel('Residuals')
+    plt.grid(True)
+    
+    # Speichern des Plots als PNG
+    file_path = MODELS_DIR / f'{model_name}_residual_plot.png'
+    plt.savefig(str(file_path))
+    plt.close()  # Schließe den Plot, damit er nicht im Notebook angezeigt wird
+
+    print(f'Residualplot gespeichert unter: {file_path}')
 
 def save_model(model, model_name):
     """
@@ -260,6 +391,80 @@ def load_results(model_name):
     file_path = MODELS_DIR / f"{model_name}_results.json"
     with open(file_path, 'r') as f:
         return json.load(f)
+    
+def load_residual_plot(model_name):
+    '''
+    Lädt den Residualplot als PNG und zeigt ihn im Notebook an.
+    
+    Args:
+        model_name (str): Der Name des Modells, dessen Residualplot geladen werden soll.
+    
+    Returns:
+        None
+    '''
+    file_path = MODELS_DIR / f'{model_name}_residual_plot.png'
+    
+    if os.path.exists(file_path):
+        display(Image(filename=str(file_path)))
+    else:
+        print(f"Fehler: Die Datei für den Residualplot von '{model_name}' wurde nicht gefunden.")
+
+def load_validation_results(model_name):
+    '''
+    Lädt die Kreuzvalidierungsergebnisse aus einer CSV-Datei im Ordner 'models/'.
+
+    Args:
+        model_name (str): Der Name des Modells, dessen Kreuzvalidierungsergebnisse geladen werden sollen.
+
+    Returns:
+        pd.DataFrame: Ein DataFrame mit den Kreuzvalidierungsergebnissen.
+    '''
+    file_path = MODELS_DIR / f"{model_name}_validation.csv"
+    
+    if os.path.exists(file_path):
+        # CSV-Datei in einen DataFrame einlesen
+        return pd.read_csv(file_path)
+    else:
+        print(f"Fehler: Die Datei für die Kreuzvalidierungsergebnisse von '{model_name}' wurde nicht gefunden.")
+        return None
+
+def full_pipeline(data, y_label, features, model_name):
+    '''
+    Führt den gesamten Prozess der Modellbildung und Bewertung durch.
+
+    Args:
+        data (pd.DataFrame): Eingabedaten.
+        y_label (str): Zielvariable.
+        features (list): Feature-Liste.
+        model_name (str): Name des Modells.
+    '''
+    # Preprocessing
+    X, y = preprocess_data(data, y_label, features)
+
+    # Splitting
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Training and Validation
+    reg, df_scores = train_and_validate_model(X_train, y_train)
+
+    # Evaluation
+    metrics, residuals_df = evaluate_model(reg, X_test, y_test)
+
+    # Summary Table
+    summary_table = generate_summary_table(reg, features)
+
+    # Save Outputs
+    save_model(reg, model_name)
+    save_features(features, model_name)
+    save_results(y_test, reg.predict(X_test), model_name)
+    save_validation_results(df_scores, model_name)
+    save_residual_plot(residuals_df, model_name)
+
+    # Print Summary
+    print('\nModellzusammenfassung:')
+    print(summary_table)
+    print('\nEvaluierungsmesswerte:')
+    print(metrics)
     
 def get_models_dir():
     """
