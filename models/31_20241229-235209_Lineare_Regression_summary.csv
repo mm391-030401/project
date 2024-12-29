@@ -1,0 +1,16 @@
+Name,Coefficient
+Intercept,59.576
+erster_monat_kohorte_fg,51.993
+monate_seit_einfuehrung_programm_kohorte,-0.707
+monat_monat_1,-0.064
+monat_monat_10,1.076
+monat_monat_11,1.254
+monat_monat_12,3.027
+monat_monat_2,-0.118
+monat_monat_3,1.17
+monat_monat_4,0.025
+monat_monat_5,-0.604
+monat_monat_6,-0.364
+monat_monat_7,-0.743
+monat_monat_8,-3.09
+monat_monat_9,-1.569
