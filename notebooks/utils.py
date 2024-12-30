@@ -494,15 +494,18 @@ def load_summary_table(model_name):
         print(f"Fehler: Die Datei für die Zusammenfassungstabelle von '{model_name}' wurde nicht gefunden.")
         return None
 
-def full_pipeline(data, y_label, features, model_name):
+import numpy as np
+
+def full_pipeline(data, y_label, features, model_name, is_log_transformed=False):
     '''
-    Führt den gesamten Prozess der Modellbildung und Bewertung durch.
+    Führt den gesamten Prozess der Modellbildung und Bewertung durch, mit optionaler logarithmischer Rücktransformation.
 
     Args:
         data (pd.DataFrame): Eingabedaten.
         y_label (str): Zielvariable.
         features (list): Feature-Liste.
         model_name (str): Name des Modells.
+        is_log_transformed (bool): Gibt an, ob die Zielvariable logarithmisch transformiert wurde.
     '''
     # Preprocessing
     X, y = preprocess_data(data, y_label, features)
@@ -516,29 +519,194 @@ def full_pipeline(data, y_label, features, model_name):
     # Evaluation
     metrics, residuals_df = evaluate_model(reg, X_test, y_test)
 
+    # Vorhersagen
+    y_pred_transformed = reg.predict(X_test)
+    
+    # Rücktransformation der Vorhersagen auf die Originalskala
+    if is_log_transformed:
+        y_pred_original = np.exp(y_pred_transformed)  # Rücktransformation der Vorhersagen
+        y_test = np.exp(y_test)
+    else:
+        y_pred_original = y_pred_transformed  # Keine Rücktransformation der Vorhersagen
+
+    # Residuen auf der Originalskala berechnen
+    residuals = y_test - y_pred_original  # Residuen nach Rücktransformation (oder nicht)
+
     # Summary Table
     summary_table = generate_summary_table(reg, X)
 
-    # Save Outputs
+    # Speichern der Ergebnisse
     save_model(reg, model_name)
     save_features(features, model_name)
-    save_results(y_test, reg.predict(X_test), model_name)
+    save_results(y_test, y_pred_original, model_name)  # Ergebnisse auf der Originalskala speichern
     save_validation_results(df_scores, model_name)
     save_residual_plot(residuals_df, model_name)
     save_summary_table(reg, X, model_name)
 
-    # Print Summary
-    print('\nModellzusammenfassung:')
-    print(summary_table)
-    print('\nEvaluierungsmesswerte:')
-    print(metrics)
+
     
-def get_models_dir():
+def run_full_pipeline_with_featurelist(data, y_label, feature_list, modeltype, start_num, is_log_transformed=False):
     """
-    Gibt den absoluten Pfad zum models-Ordner zurück.
-    
+    Führt die Pipeline für verschiedene Feature-Sets aus und generiert Modellnamen.
+
+    Args:
+        data (pd.DataFrame): Datensatz.
+        y_label (str): Zielvariable.
+        feature_list (list): Liste von Feature-Sets.
+        is_log_transformed (bool): Gibt an, ob die Zielvariable logarithmisch transformiert wurde.
+        modeltype (str): Typ des Modells (z. B. "Lineare_Regression").
+        start_num (int): Startnummer für die Modellnummerierung.
+
     Returns:
-        str: Der absolute Pfad des models-Ordners.
+        list: Liste der generierten Modellnamen.
     """
-    return str(MODELS_DIR)
+    # Leere Liste für Modellnamen erstellen
+    model_names_list= []
+    
+    for features in feature_list:
+        # Generiere den Modellnamen (dies gibt eine Liste zurück)
+        model_names = generate_model_names(start_num, 1, modeltype)
+        
+        # Entpacke den ersten Modellnamen (oder den gewünschten Index)
+        model_name = model_names[0]  # Hier entpackst du den ersten Namen der Liste
+        
+        # Füge den Modellnamen zur Liste hinzu
+        model_names_list.append(model_name)
+        
+        # Rufe die Pipeline-Funktion auf
+        full_pipeline(data, y_label, features=features, model_name=model_name, is_log_transformed=is_log_transformed)
+        
+        # Erhöhe die Modellnummer für den nächsten Durchgang
+        start_num += 1
+
+    return model_names_list
+
+
+def generate_results_df(model_names_list):
+    """
+    Generiert einen kombinierten DataFrame mit den Ergebnissen und Features für eine Liste von Modellen.
+
+    Args:
+        model_names_list (list): Liste von Modellnamen.
+
+    Returns:
+        pd.DataFrame: Ein DataFrame mit den kombinierten Ergebnissen und Features.
+    """
+
+    # Leere Liste für alle DataFrames erstellen
+    all_results = []
+
+    # Iteration durch die Modellnamen und Laden der Ergebnisse
+    for model_name in model_names_list:
+        # Lade die Evaluierungsergebnisse des Modells
+        results_df = load_results(model_name)
+        
+        if results_df is not None:
+            # Lade die verwendeten Features
+            features = load_features(model_name)
+            
+            # Füge Modellnamen und Features als zusätzliche Spalten hinzu
+            results_df['Model'] = model_name
+            results_df['Features'] = str(features)  # Features als String speichern
+            
+            # Füge das DataFrame der Liste hinzu
+            all_results.append(results_df)
+
+    # Kombiniere alle DataFrames in der Liste zu einem einzigen DataFrame
+    final_results_df = pd.concat(all_results, ignore_index=True)
+
+    # Setze den Modellnamen als Index
+    final_results_df.set_index('Model', inplace=True)
+
+    return final_results_df
+
+
+def generate_validation_stats_df(model_names_list):
+    """
+    Generiert einen kombinierten DataFrame mit deskriptiven Statistiken 
+    für die Kreuzvalidierungsergebnisse einer Liste von Modellen.
+
+    Args:
+        model_names_list (list): Liste von Modellnamen.
+
+    Returns:
+        pd.DataFrame: Ein DataFrame mit den kombinierten deskriptiven Statistiken,
+                      wobei der Modellname als zusätzlicher Index verwendet wird.
+    """
+
+    # Liste zur Speicherung der Statistiken
+    stats_list = []
+
+    # Iteration durch alle Modellnamen
+    for model_name in model_names_list:
+        # Lade die Kreuzvalidierungsergebnisse für das Modell
+        df_scores = load_validation_results(model_name)
+        
+        if df_scores is not None:
+            # Berechne deskriptive Statistiken und transponiere sie
+            stats = df_scores.describe().T
+            
+            # Füge den Modellnamen als Spalte hinzu
+            stats['Model'] = model_name
+            
+            # Füge die Statistiken zur Liste hinzu
+            stats_list.append(stats)
+
+    # Kombiniere alle Statistiken in einem DataFrame
+    combined_stats_df = pd.concat(stats_list)
+
+    # Setze den Modellnamen als Index
+    combined_stats_df = combined_stats_df.set_index('Model', append=True)
+
+    return combined_stats_df
+
+def generate_final_df(model_names_list, top_n=15, sort_column='R_squared', sort = False):
+    """
+    Generiert einen formatierten und gestylten DataFrame aus Modell- und Validierungsstatistiken.
+
+    Args:
+        model_names_list (list): Liste der Modellnamen.
+        top_n (int): Anzahl der Top-Modelle, sortiert nach der angegebenen Spalte, die angezeigt werden sollen.
+        sort_column (str): Die Spalte, nach der sortiert werden soll.
+        sort (bool): Sortierreihenfolge, True für aufsteigend, False für absteigend. Standard ist absteigend.
+
+    Returns:
+        pd.io.formats.style.Styler: Ein gestylter DataFrame mit den Top-n Modellen.
+    """
+
+    # Generiere die Ergebnisse- und Validierungsstatistik-DataFrames
+    results_df = generate_results_df(model_names_list)
+    validation_stats_df = generate_validation_stats_df(model_names_list)
+
+    # Präfix zu den Spalten von validation_stats_df hinzufügen
+    validation_stats_df = validation_stats_df.add_prefix("validation_")
+
+    # Beide DataFrames anhand des Indexes joinen
+    final_df = results_df.join(validation_stats_df, how="inner")
+
+    # Sortiere nach der angegebenen Spalte und wähle die Top-n Modelle aus
+    final_df = final_df.sort_values(by=sort_column, ascending=sort).head(top_n)
+
+    final_df = final_df.reset_index()
+
+    final_df = final_df.drop(columns=['level_0'])
+
+    # Anwenden des Stylers
+    styled_final_df = final_df.style.applymap(format_long_text, subset=['Features'])
+
+    # Formatierung für die numerischen Spalten
+    numeric_columns = [
+        'R_squared', 'MSE', 'RMSE', 'MAE', 'validation_count', 'validation_mean', 
+        'validation_std', 'validation_min', 'validation_25%', 'validation_50%', 
+        'validation_75%', 'validation_max'
+    ]
+    styled_final_df = styled_final_df.format("{:.3f}", subset=numeric_columns)
+
+    # Linksbündige Darstellung des Texts in allen Spalten
+    styled_final_df = styled_final_df.set_properties(**{'text-align': 'left'})
+
+
+
+    return styled_final_df
+
 
