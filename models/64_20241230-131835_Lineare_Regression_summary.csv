@@ -1,0 +1,17 @@
+Name,Coefficient
+Intercept,52.625
+rabatt_indexiert,0.014
+kohorte_monat_10,-2.944
+kohorte_monat_11,-3.38
+kohorte_monat_12,-1.286
+kohorte_monat_2,-1.014
+kohorte_monat_3,-2.083
+kohorte_monat_4,-0.819
+kohorte_monat_5,0.35
+kohorte_monat_6,-5.497
+kohorte_monat_7,-3.95
+kohorte_monat_8,12.324
+kohorte_monat_9,8.531
+kohorte_jahreszeit_Herbst,2.208
+kohorte_jahreszeit_Sommer,2.877
+kohorte_jahreszeit_Winter,-2.533

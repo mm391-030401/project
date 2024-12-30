@@ -1,0 +1,14 @@
+Name,Coefficient
+Intercept,50.092
+rabatt_indexiert,0.014
+kohorte_monat_10,1.798
+kohorte_monat_11,1.362
+kohorte_monat_12,-1.286
+kohorte_monat_2,-1.014
+kohorte_monat_3,0.45
+kohorte_monat_4,1.714
+kohorte_monat_5,2.883
+kohorte_monat_6,-0.087
+kohorte_monat_7,1.461
+kohorte_monat_8,17.735
+kohorte_monat_9,13.273
