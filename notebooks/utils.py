@@ -29,7 +29,7 @@ MODELS_DIR = PROJECT_DIR / "models"  # models-Ordner relativ zur Wurzel
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
 def format_long_text(val): 
-    """
+    '''
     Formatierte Darstellung von langen Texten in einer DataFrame-Spalte, um Zeilenumbrüche zu ermöglichen.
 
     Diese Funktion wird in einem Styler-Objekt verwendet, um Text in Zellen, die länger als 30 Zeichen sind, so zu formatieren,
@@ -43,13 +43,8 @@ def format_long_text(val):
     Returns:
         str: Eine CSS-Stilbeschreibung. Wenn der Text länger als 30 Zeichen ist, wird `white-space: pre-wrap; width: 300px;` zurückgegeben,
               andernfalls ein leerer String, der keine Formatierung vornimmt.
+    '''
 
-    Example:
-        Wenn `val = "Dies ist ein sehr langer Text, der umgebrochen werden muss."`:
-            Gibt die Funktion `white-space: pre-wrap; width: 300px;` zurück.
-        Wenn `val = "Kurzer Text"`:
-            Gibt die Funktion einen leeren String zurück (keine Formatierung).
-    """
     if isinstance(val, str) and len(val) > 30: 
         return 'white-space: pre-wrap; width: 300px;' 
     else: 
@@ -189,20 +184,22 @@ def generate_model_names(start_num, num_models, regression_type):
     
     return model_names
 
-def preprocess_data(data, y_label, features):
+def preprocess_data(data, y_label, features, drop_first=True):
     '''
-    Bereitet die Daten für das Modell vor, einschließlich One-Hot-Encoding.
+    Bereitet die Daten für das Modell vor, einschließlich One-Hot-Encoding,
+    und vermeidet Multikollinearität durch das Weglassen einer Kategorie pro Feature.
 
     Args:
         data (pd.DataFrame): Der ursprüngliche Datensatz.
         y_label (str): Der Name der Zielvariable.
         features (list): Die Liste der Features.
+        drop_first (bool): Gibt an, ob eine Kategorie pro One-Hot-encoded Feature ausgeschlossen werden soll.
 
     Returns:
         pd.DataFrame, pd.Series: Features (X) und Zielvariable (y).
     '''
     model_data = data[[y_label] + features]
-    model_data = pd.get_dummies(model_data)
+    model_data = pd.get_dummies(model_data, drop_first=drop_first)
     X = model_data.drop(columns=[y_label])
     y = model_data[y_label]
     return X, y
