@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import datetime
 import numpy as np
+import itertools
 
 from IPython.display import display
 from IPython.display import HTML
@@ -764,3 +765,21 @@ def load_styled_dataframe(filepath):
 
     # Gib das HTML zur Anzeige zurück
     return HTML(html)
+
+def generate_combinations(strings):
+    """
+    Generiert alle möglichen Kombinationen von mindestens einem Element aus der gegebenen Liste von Strings.
+    
+    Args:
+        strings (list): Eine Liste von Strings, die die Variablen repräsentieren.
+        
+    Returns:
+        list: Eine Liste von Listen, wobei jede Liste eine Kombination von Strings enthält.
+    """
+    # Generiere alle möglichen Kombinationen (mindestens eine der Strings)
+    combinations = []
+    for r in range(1, len(strings) + 1):
+        combinations.extend(itertools.combinations(strings, r))
+    
+    # Umwandeln in eine Liste von Listen
+    return [list(comb) for comb in combinations]
