@@ -3,22 +3,30 @@
 import json
 from joblib import dump
 from joblib import load
+
 from pathlib import Path
 import os
+
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LinearRegression
+
 from functools import partial
+
 import altair as alt
 import matplotlib.pyplot as plt
+
 import pandas as pd
+import datetime
+import numpy as np
+
 from IPython.display import display
 from IPython.display import HTML
 from IPython.display import Image
-import datetime
+
 
 # Absoluter Pfad zum 'models/'-Ordner
 NOTEBOOKS_DIR = Path(os.getcwd())  # Aktuelles Arbeitsverzeichnis
@@ -111,7 +119,6 @@ def calc_corr(df, y, x, method='spearman'):
     # Ausgabe der Korrelation
     print(f'Korrelation zwischen {y} und {x} beträgt: {korr}')
 
-import altair as alt
 
 def create_boxplot_with_count(df, y, x, color1, x_type='N', x_limits=None):
     '''
@@ -493,8 +500,6 @@ def load_summary_table(model_name):
     else:
         print(f"Fehler: Die Datei für die Zusammenfassungstabelle von '{model_name}' wurde nicht gefunden.")
         return None
-
-import numpy as np
 
 def full_pipeline(data, y_label, features, model_name, is_log_transformed=False):
     '''
