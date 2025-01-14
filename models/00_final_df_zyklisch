@@ -1,0 +1,288 @@
+<style type="text/css">
+#T_1a489_row0_col0, #T_1a489_row0_col1, #T_1a489_row0_col2, #T_1a489_row0_col3, #T_1a489_row0_col4, #T_1a489_row0_col6, #T_1a489_row0_col7, #T_1a489_row0_col8, #T_1a489_row0_col9, #T_1a489_row0_col10, #T_1a489_row0_col11, #T_1a489_row0_col12, #T_1a489_row0_col13, #T_1a489_row1_col0, #T_1a489_row1_col1, #T_1a489_row1_col2, #T_1a489_row1_col3, #T_1a489_row1_col4, #T_1a489_row1_col6, #T_1a489_row1_col7, #T_1a489_row1_col8, #T_1a489_row1_col9, #T_1a489_row1_col10, #T_1a489_row1_col11, #T_1a489_row1_col12, #T_1a489_row1_col13, #T_1a489_row2_col0, #T_1a489_row2_col1, #T_1a489_row2_col2, #T_1a489_row2_col3, #T_1a489_row2_col4, #T_1a489_row2_col6, #T_1a489_row2_col7, #T_1a489_row2_col8, #T_1a489_row2_col9, #T_1a489_row2_col10, #T_1a489_row2_col11, #T_1a489_row2_col12, #T_1a489_row2_col13, #T_1a489_row3_col0, #T_1a489_row3_col1, #T_1a489_row3_col2, #T_1a489_row3_col3, #T_1a489_row3_col4, #T_1a489_row3_col6, #T_1a489_row3_col7, #T_1a489_row3_col8, #T_1a489_row3_col9, #T_1a489_row3_col10, #T_1a489_row3_col11, #T_1a489_row3_col12, #T_1a489_row3_col13, #T_1a489_row4_col0, #T_1a489_row4_col1, #T_1a489_row4_col2, #T_1a489_row4_col3, #T_1a489_row4_col4, #T_1a489_row4_col6, #T_1a489_row4_col7, #T_1a489_row4_col8, #T_1a489_row4_col9, #T_1a489_row4_col10, #T_1a489_row4_col11, #T_1a489_row4_col12, #T_1a489_row4_col13, #T_1a489_row5_col0, #T_1a489_row5_col1, #T_1a489_row5_col2, #T_1a489_row5_col3, #T_1a489_row5_col4, #T_1a489_row5_col6, #T_1a489_row5_col7, #T_1a489_row5_col8, #T_1a489_row5_col9, #T_1a489_row5_col10, #T_1a489_row5_col11, #T_1a489_row5_col12, #T_1a489_row5_col13, #T_1a489_row6_col0, #T_1a489_row6_col1, #T_1a489_row6_col2, #T_1a489_row6_col3, #T_1a489_row6_col4, #T_1a489_row6_col6, #T_1a489_row6_col7, #T_1a489_row6_col8, #T_1a489_row6_col9, #T_1a489_row6_col10, #T_1a489_row6_col11, #T_1a489_row6_col12, #T_1a489_row6_col13, #T_1a489_row7_col0, #T_1a489_row7_col1, #T_1a489_row7_col2, #T_1a489_row7_col3, #T_1a489_row7_col4, #T_1a489_row7_col6, #T_1a489_row7_col7, #T_1a489_row7_col8, #T_1a489_row7_col9, #T_1a489_row7_col10, #T_1a489_row7_col11, #T_1a489_row7_col12, #T_1a489_row7_col13, #T_1a489_row8_col0, #T_1a489_row8_col1, #T_1a489_row8_col2, #T_1a489_row8_col3, #T_1a489_row8_col4, #T_1a489_row8_col6, #T_1a489_row8_col7, #T_1a489_row8_col8, #T_1a489_row8_col9, #T_1a489_row8_col10, #T_1a489_row8_col11, #T_1a489_row8_col12, #T_1a489_row8_col13, #T_1a489_row9_col0, #T_1a489_row9_col1, #T_1a489_row9_col2, #T_1a489_row9_col3, #T_1a489_row9_col4, #T_1a489_row9_col6, #T_1a489_row9_col7, #T_1a489_row9_col8, #T_1a489_row9_col9, #T_1a489_row9_col10, #T_1a489_row9_col11, #T_1a489_row9_col12, #T_1a489_row9_col13, #T_1a489_row10_col0, #T_1a489_row10_col1, #T_1a489_row10_col2, #T_1a489_row10_col3, #T_1a489_row10_col4, #T_1a489_row10_col6, #T_1a489_row10_col7, #T_1a489_row10_col8, #T_1a489_row10_col9, #T_1a489_row10_col10, #T_1a489_row10_col11, #T_1a489_row10_col12, #T_1a489_row10_col13, #T_1a489_row11_col0, #T_1a489_row11_col1, #T_1a489_row11_col2, #T_1a489_row11_col3, #T_1a489_row11_col4, #T_1a489_row11_col6, #T_1a489_row11_col7, #T_1a489_row11_col8, #T_1a489_row11_col9, #T_1a489_row11_col10, #T_1a489_row11_col11, #T_1a489_row11_col12, #T_1a489_row11_col13, #T_1a489_row12_col0, #T_1a489_row12_col1, #T_1a489_row12_col2, #T_1a489_row12_col3, #T_1a489_row12_col4, #T_1a489_row12_col6, #T_1a489_row12_col7, #T_1a489_row12_col8, #T_1a489_row12_col9, #T_1a489_row12_col10, #T_1a489_row12_col11, #T_1a489_row12_col12, #T_1a489_row12_col13, #T_1a489_row13_col0, #T_1a489_row13_col1, #T_1a489_row13_col2, #T_1a489_row13_col3, #T_1a489_row13_col4, #T_1a489_row13_col6, #T_1a489_row13_col7, #T_1a489_row13_col8, #T_1a489_row13_col9, #T_1a489_row13_col10, #T_1a489_row13_col11, #T_1a489_row13_col12, #T_1a489_row13_col13, #T_1a489_row14_col0, #T_1a489_row14_col1, #T_1a489_row14_col2, #T_1a489_row14_col3, #T_1a489_row14_col4, #T_1a489_row14_col6, #T_1a489_row14_col7, #T_1a489_row14_col8, #T_1a489_row14_col9, #T_1a489_row14_col10, #T_1a489_row14_col11, #T_1a489_row14_col12, #T_1a489_row14_col13 {
+  text-align: left;
+}
+#T_1a489_row0_col5, #T_1a489_row1_col5, #T_1a489_row2_col5, #T_1a489_row3_col5, #T_1a489_row4_col5, #T_1a489_row5_col5, #T_1a489_row6_col5, #T_1a489_row7_col5, #T_1a489_row8_col5, #T_1a489_row9_col5, #T_1a489_row10_col5, #T_1a489_row11_col5, #T_1a489_row12_col5, #T_1a489_row13_col5, #T_1a489_row14_col5 {
+  white-space: pre-wrap;
+  width: 300px;
+  text-align: left;
+}
+</style>
+<table id="T_1a489">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_1a489_level0_col0" class="col_heading level0 col0" >Model</th>
+      <th id="T_1a489_level0_col1" class="col_heading level0 col1" >R_squared</th>
+      <th id="T_1a489_level0_col2" class="col_heading level0 col2" >MSE</th>
+      <th id="T_1a489_level0_col3" class="col_heading level0 col3" >RMSE</th>
+      <th id="T_1a489_level0_col4" class="col_heading level0 col4" >MAE</th>
+      <th id="T_1a489_level0_col5" class="col_heading level0 col5" >Features</th>
+      <th id="T_1a489_level0_col6" class="col_heading level0 col6" >validation_count</th>
+      <th id="T_1a489_level0_col7" class="col_heading level0 col7" >validation_mean</th>
+      <th id="T_1a489_level0_col8" class="col_heading level0 col8" >validation_std</th>
+      <th id="T_1a489_level0_col9" class="col_heading level0 col9" >validation_min</th>
+      <th id="T_1a489_level0_col10" class="col_heading level0 col10" >validation_25%</th>
+      <th id="T_1a489_level0_col11" class="col_heading level0 col11" >validation_50%</th>
+      <th id="T_1a489_level0_col12" class="col_heading level0 col12" >validation_75%</th>
+      <th id="T_1a489_level0_col13" class="col_heading level0 col13" >validation_max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_1a489_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_1a489_row0_col0" class="data row0 col0" >856_20250114-183820_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row0_col1" class="data row0 col1" >0.681</td>
+      <td id="T_1a489_row0_col2" class="data row0 col2" >69.514</td>
+      <td id="T_1a489_row0_col3" class="data row0 col3" >8.338</td>
+      <td id="T_1a489_row0_col4" class="data row0 col4" >6.567</td>
+      <td id="T_1a489_row0_col5" class="data row0 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_jahreszeit', 'kohorte_jahreszeit', 'cos_kohorte_monat', 'sin_monat_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row0_col6" class="data row0 col6" >5.000</td>
+      <td id="T_1a489_row0_col7" class="data row0 col7" >72.824</td>
+      <td id="T_1a489_row0_col8" class="data row0 col8" >7.783</td>
+      <td id="T_1a489_row0_col9" class="data row0 col9" >59.455</td>
+      <td id="T_1a489_row0_col10" class="data row0 col10" >73.752</td>
+      <td id="T_1a489_row0_col11" class="data row0 col11" >74.591</td>
+      <td id="T_1a489_row0_col12" class="data row0 col12" >77.019</td>
+      <td id="T_1a489_row0_col13" class="data row0 col13" >79.304</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_1a489_row1_col0" class="data row1 col0" >771_20250114-183808_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row1_col1" class="data row1 col1" >0.680</td>
+      <td id="T_1a489_row1_col2" class="data row1 col2" >69.688</td>
+      <td id="T_1a489_row1_col3" class="data row1 col3" >8.348</td>
+      <td id="T_1a489_row1_col4" class="data row1 col4" >6.556</td>
+      <td id="T_1a489_row1_col5" class="data row1 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_jahreszeit', 'kohorte_jahreszeit', 'cos_kohorte_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row1_col6" class="data row1 col6" >5.000</td>
+      <td id="T_1a489_row1_col7" class="data row1 col7" >72.683</td>
+      <td id="T_1a489_row1_col8" class="data row1 col8" >7.734</td>
+      <td id="T_1a489_row1_col9" class="data row1 col9" >59.531</td>
+      <td id="T_1a489_row1_col10" class="data row1 col10" >73.562</td>
+      <td id="T_1a489_row1_col11" class="data row1 col11" >73.899</td>
+      <td id="T_1a489_row1_col12" class="data row1 col12" >77.010</td>
+      <td id="T_1a489_row1_col13" class="data row1 col13" >79.414</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_1a489_row2_col0" class="data row2 col0" >792_20250114-183811_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row2_col1" class="data row2 col1" >0.680</td>
+      <td id="T_1a489_row2_col2" class="data row2 col2" >69.819</td>
+      <td id="T_1a489_row2_col3" class="data row2 col3" >8.356</td>
+      <td id="T_1a489_row2_col4" class="data row2 col4" >6.577</td>
+      <td id="T_1a489_row2_col5" class="data row2 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_jahreszeit', 'cos_kohorte_monat', 'sin_monat_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row2_col6" class="data row2 col6" >5.000</td>
+      <td id="T_1a489_row2_col7" class="data row2 col7" >72.387</td>
+      <td id="T_1a489_row2_col8" class="data row2 col8" >8.187</td>
+      <td id="T_1a489_row2_col9" class="data row2 col9" >58.204</td>
+      <td id="T_1a489_row2_col10" class="data row2 col10" >73.458</td>
+      <td id="T_1a489_row2_col11" class="data row2 col11" >74.789</td>
+      <td id="T_1a489_row2_col12" class="data row2 col12" >76.599</td>
+      <td id="T_1a489_row2_col13" class="data row2 col13" >78.887</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_1a489_row3_col0" class="data row3 col0" >660_20250114-183754_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row3_col1" class="data row3 col1" >0.677</td>
+      <td id="T_1a489_row3_col2" class="data row3 col2" >70.359</td>
+      <td id="T_1a489_row3_col3" class="data row3 col3" >8.388</td>
+      <td id="T_1a489_row3_col4" class="data row3 col4" >6.598</td>
+      <td id="T_1a489_row3_col5" class="data row3 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_jahreszeit', 'cos_kohorte_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row3_col6" class="data row3 col6" >5.000</td>
+      <td id="T_1a489_row3_col7" class="data row3 col7" >71.866</td>
+      <td id="T_1a489_row3_col8" class="data row3 col8" >8.077</td>
+      <td id="T_1a489_row3_col9" class="data row3 col9" >58.528</td>
+      <td id="T_1a489_row3_col10" class="data row3 col10" >70.996</td>
+      <td id="T_1a489_row3_col11" class="data row3 col11" >73.757</td>
+      <td id="T_1a489_row3_col12" class="data row3 col12" >76.822</td>
+      <td id="T_1a489_row3_col13" class="data row3 col13" >79.226</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_1a489_row4_col0" class="data row4 col0" >770_20250114-183808_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row4_col1" class="data row4 col1" >0.677</td>
+      <td id="T_1a489_row4_col2" class="data row4 col2" >70.483</td>
+      <td id="T_1a489_row4_col3" class="data row4 col3" >8.395</td>
+      <td id="T_1a489_row4_col4" class="data row4 col4" >6.625</td>
+      <td id="T_1a489_row4_col5" class="data row4 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_jahreszeit', 'kohorte_jahreszeit', 'cos_kohorte_monat', 'sin_monat_monat']</td>
+      <td id="T_1a489_row4_col6" class="data row4 col6" >5.000</td>
+      <td id="T_1a489_row4_col7" class="data row4 col7" >72.898</td>
+      <td id="T_1a489_row4_col8" class="data row4 col8" >8.110</td>
+      <td id="T_1a489_row4_col9" class="data row4 col9" >58.774</td>
+      <td id="T_1a489_row4_col10" class="data row4 col10" >74.598</td>
+      <td id="T_1a489_row4_col11" class="data row4 col11" >75.423</td>
+      <td id="T_1a489_row4_col12" class="data row4 col12" >76.213</td>
+      <td id="T_1a489_row4_col13" class="data row4 col13" >79.481</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_1a489_row5_col0" class="data row5 col0" >659_20250114-183754_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row5_col1" class="data row5 col1" >0.676</td>
+      <td id="T_1a489_row5_col2" class="data row5 col2" >70.578</td>
+      <td id="T_1a489_row5_col3" class="data row5 col3" >8.401</td>
+      <td id="T_1a489_row5_col4" class="data row5 col4" >6.619</td>
+      <td id="T_1a489_row5_col5" class="data row5 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_jahreszeit', 'cos_kohorte_monat', 'sin_monat_monat']</td>
+      <td id="T_1a489_row5_col6" class="data row5 col6" >5.000</td>
+      <td id="T_1a489_row5_col7" class="data row5 col7" >73.324</td>
+      <td id="T_1a489_row5_col8" class="data row5 col8" >9.507</td>
+      <td id="T_1a489_row5_col9" class="data row5 col9" >56.765</td>
+      <td id="T_1a489_row5_col10" class="data row5 col10" >75.476</td>
+      <td id="T_1a489_row5_col11" class="data row5 col11" >76.090</td>
+      <td id="T_1a489_row5_col12" class="data row5 col12" >77.231</td>
+      <td id="T_1a489_row5_col13" class="data row5 col13" >81.058</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_1a489_row6_col0" class="data row6 col0" >639_20250114-183752_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row6_col1" class="data row6 col1" >0.676</td>
+      <td id="T_1a489_row6_col2" class="data row6 col2" >70.658</td>
+      <td id="T_1a489_row6_col3" class="data row6 col3" >8.406</td>
+      <td id="T_1a489_row6_col4" class="data row6 col4" >6.616</td>
+      <td id="T_1a489_row6_col5" class="data row6 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_jahreszeit', 'kohorte_jahreszeit', 'cos_kohorte_monat']</td>
+      <td id="T_1a489_row6_col6" class="data row6 col6" >5.000</td>
+      <td id="T_1a489_row6_col7" class="data row6 col7" >72.758</td>
+      <td id="T_1a489_row6_col8" class="data row6 col8" >8.040</td>
+      <td id="T_1a489_row6_col9" class="data row6 col9" >58.852</td>
+      <td id="T_1a489_row6_col10" class="data row6 col10" >74.406</td>
+      <td id="T_1a489_row6_col11" class="data row6 col11" >74.734</td>
+      <td id="T_1a489_row6_col12" class="data row6 col12" >76.206</td>
+      <td id="T_1a489_row6_col13" class="data row6 col13" >79.592</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_1a489_row7_col0" class="data row7 col0" >886_20250114-183823_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row7_col1" class="data row7 col1" >0.676</td>
+      <td id="T_1a489_row7_col2" class="data row7 col2" >70.691</td>
+      <td id="T_1a489_row7_col3" class="data row7 col3" >8.408</td>
+      <td id="T_1a489_row7_col4" class="data row7 col4" >6.462</td>
+      <td id="T_1a489_row7_col5" class="data row7 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_jahreszeit', 'kohorte_jahreszeit', 'rabatt_indexiert', 'cos_kohorte_monat', 'sin_monat_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row7_col6" class="data row7 col6" >5.000</td>
+      <td id="T_1a489_row7_col7" class="data row7 col7" >71.660</td>
+      <td id="T_1a489_row7_col8" class="data row7 col8" >9.428</td>
+      <td id="T_1a489_row7_col9" class="data row7 col9" >56.658</td>
+      <td id="T_1a489_row7_col10" class="data row7 col10" >71.462</td>
+      <td id="T_1a489_row7_col11" class="data row7 col11" >72.031</td>
+      <td id="T_1a489_row7_col12" class="data row7 col12" >75.888</td>
+      <td id="T_1a489_row7_col13" class="data row7 col13" >82.263</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_1a489_row8_col0" class="data row8 col0" >851_20250114-183819_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row8_col1" class="data row8 col1" >0.675</td>
+      <td id="T_1a489_row8_col2" class="data row8 col2" >70.850</td>
+      <td id="T_1a489_row8_col3" class="data row8 col3" >8.417</td>
+      <td id="T_1a489_row8_col4" class="data row8 col4" >6.448</td>
+      <td id="T_1a489_row8_col5" class="data row8 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_jahreszeit', 'kohorte_jahreszeit', 'rabatt_indexiert', 'cos_kohorte_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row8_col6" class="data row8 col6" >5.000</td>
+      <td id="T_1a489_row8_col7" class="data row8 col7" >71.529</td>
+      <td id="T_1a489_row8_col8" class="data row8 col8" >9.428</td>
+      <td id="T_1a489_row8_col9" class="data row8 col9" >56.743</td>
+      <td id="T_1a489_row8_col10" class="data row8 col10" >71.282</td>
+      <td id="T_1a489_row8_col11" class="data row8 col11" >71.346</td>
+      <td id="T_1a489_row8_col12" class="data row8 col12" >75.893</td>
+      <td id="T_1a489_row8_col13" class="data row8 col13" >82.382</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_1a489_row9_col0" class="data row9 col0" >865_20250114-183821_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row9_col1" class="data row9 col1" >0.674</td>
+      <td id="T_1a489_row9_col2" class="data row9 col2" >70.950</td>
+      <td id="T_1a489_row9_col3" class="data row9 col3" >8.423</td>
+      <td id="T_1a489_row9_col4" class="data row9 col4" >6.462</td>
+      <td id="T_1a489_row9_col5" class="data row9 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_jahreszeit', 'rabatt_indexiert', 'cos_kohorte_monat', 'sin_monat_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row9_col6" class="data row9 col6" >5.000</td>
+      <td id="T_1a489_row9_col7" class="data row9 col7" >71.228</td>
+      <td id="T_1a489_row9_col8" class="data row9 col8" >9.705</td>
+      <td id="T_1a489_row9_col9" class="data row9 col9" >55.611</td>
+      <td id="T_1a489_row9_col10" class="data row9 col10" >71.124</td>
+      <td id="T_1a489_row9_col11" class="data row9 col11" >72.155</td>
+      <td id="T_1a489_row9_col12" class="data row9 col12" >75.267</td>
+      <td id="T_1a489_row9_col13" class="data row9 col13" >81.983</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_1a489_row10_col0" class="data row10 col0" >519_20250114-183737_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row10_col1" class="data row10 col1" >0.673</td>
+      <td id="T_1a489_row10_col2" class="data row10 col2" >71.161</td>
+      <td id="T_1a489_row10_col3" class="data row10 col3" >8.436</td>
+      <td id="T_1a489_row10_col4" class="data row10 col4" >6.636</td>
+      <td id="T_1a489_row10_col5" class="data row10 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_jahreszeit', 'cos_kohorte_monat']</td>
+      <td id="T_1a489_row10_col6" class="data row10 col6" >5.000</td>
+      <td id="T_1a489_row10_col7" class="data row10 col7" >72.762</td>
+      <td id="T_1a489_row10_col8" class="data row10 col8" >9.247</td>
+      <td id="T_1a489_row10_col9" class="data row10 col9" >57.102</td>
+      <td id="T_1a489_row10_col10" class="data row10 col10" >73.199</td>
+      <td id="T_1a489_row10_col11" class="data row10 col11" >75.787</td>
+      <td id="T_1a489_row10_col12" class="data row10 col12" >76.303</td>
+      <td id="T_1a489_row10_col13" class="data row10 col13" >81.417</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_1a489_row11_col0" class="data row11 col0" >887_20250114-183823_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row11_col1" class="data row11 col1" >0.673</td>
+      <td id="T_1a489_row11_col2" class="data row11 col2" >71.318</td>
+      <td id="T_1a489_row11_col3" class="data row11 col3" >8.445</td>
+      <td id="T_1a489_row11_col4" class="data row11 col4" >6.794</td>
+      <td id="T_1a489_row11_col5" class="data row11 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_jahreszeit', 'kohorte_jahreszeit', 'sin_kohorte_monat', 'cos_kohorte_monat', 'sin_monat_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row11_col6" class="data row11 col6" >5.000</td>
+      <td id="T_1a489_row11_col7" class="data row11 col7" >70.053</td>
+      <td id="T_1a489_row11_col8" class="data row11 col8" >7.180</td>
+      <td id="T_1a489_row11_col9" class="data row11 col9" >57.246</td>
+      <td id="T_1a489_row11_col10" class="data row11 col10" >72.781</td>
+      <td id="T_1a489_row11_col11" class="data row11 col11" >72.948</td>
+      <td id="T_1a489_row11_col12" class="data row11 col12" >73.104</td>
+      <td id="T_1a489_row11_col13" class="data row11 col13" >74.186</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_1a489_row12_col0" class="data row12 col0" >861_20250114-183820_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row12_col1" class="data row12 col1" >0.672</td>
+      <td id="T_1a489_row12_col2" class="data row12 col2" >71.391</td>
+      <td id="T_1a489_row12_col3" class="data row12 col3" >8.449</td>
+      <td id="T_1a489_row12_col4" class="data row12 col4" >6.612</td>
+      <td id="T_1a489_row12_col5" class="data row12 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_jahreszeit', 'sin_kohorte_monat', 'cos_kohorte_monat', 'sin_monat_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row12_col6" class="data row12 col6" >5.000</td>
+      <td id="T_1a489_row12_col7" class="data row12 col7" >70.930</td>
+      <td id="T_1a489_row12_col8" class="data row12 col8" >6.935</td>
+      <td id="T_1a489_row12_col9" class="data row12 col9" >58.742</td>
+      <td id="T_1a489_row12_col10" class="data row12 col10" >71.960</td>
+      <td id="T_1a489_row12_col11" class="data row12 col11" >73.742</td>
+      <td id="T_1a489_row12_col12" class="data row12 col12" >75.066</td>
+      <td id="T_1a489_row12_col13" class="data row12 col13" >75.140</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_1a489_row13_col0" class="data row13 col0" >787_20250114-183810_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row13_col1" class="data row13 col1" >0.672</td>
+      <td id="T_1a489_row13_col2" class="data row13 col2" >71.488</td>
+      <td id="T_1a489_row13_col3" class="data row13 col3" >8.455</td>
+      <td id="T_1a489_row13_col4" class="data row13 col4" >6.479</td>
+      <td id="T_1a489_row13_col5" class="data row13 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_jahreszeit', 'rabatt_indexiert', 'cos_kohorte_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row13_col6" class="data row13 col6" >5.000</td>
+      <td id="T_1a489_row13_col7" class="data row13 col7" >70.783</td>
+      <td id="T_1a489_row13_col8" class="data row13 col8" >9.741</td>
+      <td id="T_1a489_row13_col9" class="data row13 col9" >55.940</td>
+      <td id="T_1a489_row13_col10" class="data row13 col10" >68.814</td>
+      <td id="T_1a489_row13_col11" class="data row13 col11" >71.440</td>
+      <td id="T_1a489_row13_col12" class="data row13 col12" >75.364</td>
+      <td id="T_1a489_row13_col13" class="data row13 col13" >82.356</td>
+    </tr>
+    <tr>
+      <th id="T_1a489_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_1a489_row14_col0" class="data row14 col0" >854_20250114-183819_Lineare_Regression_Monate_zyklisch</td>
+      <td id="T_1a489_row14_col1" class="data row14 col1" >0.672</td>
+      <td id="T_1a489_row14_col2" class="data row14 col2" >71.517</td>
+      <td id="T_1a489_row14_col3" class="data row14 col3" >8.457</td>
+      <td id="T_1a489_row14_col4" class="data row14 col4" >6.798</td>
+      <td id="T_1a489_row14_col5" class="data row14 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_jahreszeit', 'kohorte_jahreszeit', 'sin_kohorte_monat', 'cos_kohorte_monat', 'cos_monat_monat']</td>
+      <td id="T_1a489_row14_col6" class="data row14 col6" >5.000</td>
+      <td id="T_1a489_row14_col7" class="data row14 col7" >69.885</td>
+      <td id="T_1a489_row14_col8" class="data row14 col8" >6.993</td>
+      <td id="T_1a489_row14_col9" class="data row14 col9" >57.383</td>
+      <td id="T_1a489_row14_col10" class="data row14 col10" >72.620</td>
+      <td id="T_1a489_row14_col11" class="data row14 col11" >72.961</td>
+      <td id="T_1a489_row14_col12" class="data row14 col12" >73.215</td>
+      <td id="T_1a489_row14_col13" class="data row14 col13" >73.244</td>
+    </tr>
+  </tbody>
+</table>

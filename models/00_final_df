@@ -1,0 +1,288 @@
+<style type="text/css">
+#T_00356_row0_col0, #T_00356_row0_col1, #T_00356_row0_col2, #T_00356_row0_col3, #T_00356_row0_col4, #T_00356_row0_col6, #T_00356_row0_col7, #T_00356_row0_col8, #T_00356_row0_col9, #T_00356_row0_col10, #T_00356_row0_col11, #T_00356_row0_col12, #T_00356_row0_col13, #T_00356_row1_col0, #T_00356_row1_col1, #T_00356_row1_col2, #T_00356_row1_col3, #T_00356_row1_col4, #T_00356_row1_col6, #T_00356_row1_col7, #T_00356_row1_col8, #T_00356_row1_col9, #T_00356_row1_col10, #T_00356_row1_col11, #T_00356_row1_col12, #T_00356_row1_col13, #T_00356_row2_col0, #T_00356_row2_col1, #T_00356_row2_col2, #T_00356_row2_col3, #T_00356_row2_col4, #T_00356_row2_col6, #T_00356_row2_col7, #T_00356_row2_col8, #T_00356_row2_col9, #T_00356_row2_col10, #T_00356_row2_col11, #T_00356_row2_col12, #T_00356_row2_col13, #T_00356_row3_col0, #T_00356_row3_col1, #T_00356_row3_col2, #T_00356_row3_col3, #T_00356_row3_col4, #T_00356_row3_col6, #T_00356_row3_col7, #T_00356_row3_col8, #T_00356_row3_col9, #T_00356_row3_col10, #T_00356_row3_col11, #T_00356_row3_col12, #T_00356_row3_col13, #T_00356_row4_col0, #T_00356_row4_col1, #T_00356_row4_col2, #T_00356_row4_col3, #T_00356_row4_col4, #T_00356_row4_col6, #T_00356_row4_col7, #T_00356_row4_col8, #T_00356_row4_col9, #T_00356_row4_col10, #T_00356_row4_col11, #T_00356_row4_col12, #T_00356_row4_col13, #T_00356_row5_col0, #T_00356_row5_col1, #T_00356_row5_col2, #T_00356_row5_col3, #T_00356_row5_col4, #T_00356_row5_col6, #T_00356_row5_col7, #T_00356_row5_col8, #T_00356_row5_col9, #T_00356_row5_col10, #T_00356_row5_col11, #T_00356_row5_col12, #T_00356_row5_col13, #T_00356_row6_col0, #T_00356_row6_col1, #T_00356_row6_col2, #T_00356_row6_col3, #T_00356_row6_col4, #T_00356_row6_col6, #T_00356_row6_col7, #T_00356_row6_col8, #T_00356_row6_col9, #T_00356_row6_col10, #T_00356_row6_col11, #T_00356_row6_col12, #T_00356_row6_col13, #T_00356_row7_col0, #T_00356_row7_col1, #T_00356_row7_col2, #T_00356_row7_col3, #T_00356_row7_col4, #T_00356_row7_col6, #T_00356_row7_col7, #T_00356_row7_col8, #T_00356_row7_col9, #T_00356_row7_col10, #T_00356_row7_col11, #T_00356_row7_col12, #T_00356_row7_col13, #T_00356_row8_col0, #T_00356_row8_col1, #T_00356_row8_col2, #T_00356_row8_col3, #T_00356_row8_col4, #T_00356_row8_col6, #T_00356_row8_col7, #T_00356_row8_col8, #T_00356_row8_col9, #T_00356_row8_col10, #T_00356_row8_col11, #T_00356_row8_col12, #T_00356_row8_col13, #T_00356_row9_col0, #T_00356_row9_col1, #T_00356_row9_col2, #T_00356_row9_col3, #T_00356_row9_col4, #T_00356_row9_col6, #T_00356_row9_col7, #T_00356_row9_col8, #T_00356_row9_col9, #T_00356_row9_col10, #T_00356_row9_col11, #T_00356_row9_col12, #T_00356_row9_col13, #T_00356_row10_col0, #T_00356_row10_col1, #T_00356_row10_col2, #T_00356_row10_col3, #T_00356_row10_col4, #T_00356_row10_col6, #T_00356_row10_col7, #T_00356_row10_col8, #T_00356_row10_col9, #T_00356_row10_col10, #T_00356_row10_col11, #T_00356_row10_col12, #T_00356_row10_col13, #T_00356_row11_col0, #T_00356_row11_col1, #T_00356_row11_col2, #T_00356_row11_col3, #T_00356_row11_col4, #T_00356_row11_col6, #T_00356_row11_col7, #T_00356_row11_col8, #T_00356_row11_col9, #T_00356_row11_col10, #T_00356_row11_col11, #T_00356_row11_col12, #T_00356_row11_col13, #T_00356_row12_col0, #T_00356_row12_col1, #T_00356_row12_col2, #T_00356_row12_col3, #T_00356_row12_col4, #T_00356_row12_col6, #T_00356_row12_col7, #T_00356_row12_col8, #T_00356_row12_col9, #T_00356_row12_col10, #T_00356_row12_col11, #T_00356_row12_col12, #T_00356_row12_col13, #T_00356_row13_col0, #T_00356_row13_col1, #T_00356_row13_col2, #T_00356_row13_col3, #T_00356_row13_col4, #T_00356_row13_col6, #T_00356_row13_col7, #T_00356_row13_col8, #T_00356_row13_col9, #T_00356_row13_col10, #T_00356_row13_col11, #T_00356_row13_col12, #T_00356_row13_col13, #T_00356_row14_col0, #T_00356_row14_col1, #T_00356_row14_col2, #T_00356_row14_col3, #T_00356_row14_col4, #T_00356_row14_col6, #T_00356_row14_col7, #T_00356_row14_col8, #T_00356_row14_col9, #T_00356_row14_col10, #T_00356_row14_col11, #T_00356_row14_col12, #T_00356_row14_col13 {
+  text-align: left;
+}
+#T_00356_row0_col5, #T_00356_row1_col5, #T_00356_row2_col5, #T_00356_row3_col5, #T_00356_row4_col5, #T_00356_row5_col5, #T_00356_row6_col5, #T_00356_row7_col5, #T_00356_row8_col5, #T_00356_row9_col5, #T_00356_row10_col5, #T_00356_row11_col5, #T_00356_row12_col5, #T_00356_row13_col5, #T_00356_row14_col5 {
+  white-space: pre-wrap;
+  width: 300px;
+  text-align: left;
+}
+</style>
+<table id="T_00356">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_00356_level0_col0" class="col_heading level0 col0" >Model</th>
+      <th id="T_00356_level0_col1" class="col_heading level0 col1" >R_squared</th>
+      <th id="T_00356_level0_col2" class="col_heading level0 col2" >MSE</th>
+      <th id="T_00356_level0_col3" class="col_heading level0 col3" >RMSE</th>
+      <th id="T_00356_level0_col4" class="col_heading level0 col4" >MAE</th>
+      <th id="T_00356_level0_col5" class="col_heading level0 col5" >Features</th>
+      <th id="T_00356_level0_col6" class="col_heading level0 col6" >validation_count</th>
+      <th id="T_00356_level0_col7" class="col_heading level0 col7" >validation_mean</th>
+      <th id="T_00356_level0_col8" class="col_heading level0 col8" >validation_std</th>
+      <th id="T_00356_level0_col9" class="col_heading level0 col9" >validation_min</th>
+      <th id="T_00356_level0_col10" class="col_heading level0 col10" >validation_25%</th>
+      <th id="T_00356_level0_col11" class="col_heading level0 col11" >validation_50%</th>
+      <th id="T_00356_level0_col12" class="col_heading level0 col12" >validation_75%</th>
+      <th id="T_00356_level0_col13" class="col_heading level0 col13" >validation_max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_00356_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_00356_row0_col0" class="data row0 col0" >124_20250114-181601_Lineare_Regression</td>
+      <td id="T_00356_row0_col1" class="data row0 col1" >0.704</td>
+      <td id="T_00356_row0_col2" class="data row0 col2" >64.415</td>
+      <td id="T_00356_row0_col3" class="data row0 col3" >8.026</td>
+      <td id="T_00356_row0_col4" class="data row0 col4" >6.100</td>
+      <td id="T_00356_row0_col5" class="data row0 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_monat', 'monat_jahreszeit', 'kohorte_jahreszeit', 'rabatt_indexiert']</td>
+      <td id="T_00356_row0_col6" class="data row0 col6" >5.000</td>
+      <td id="T_00356_row0_col7" class="data row0 col7" >59.903</td>
+      <td id="T_00356_row0_col8" class="data row0 col8" >9.047</td>
+      <td id="T_00356_row0_col9" class="data row0 col9" >46.442</td>
+      <td id="T_00356_row0_col10" class="data row0 col10" >55.763</td>
+      <td id="T_00356_row0_col11" class="data row0 col11" >63.241</td>
+      <td id="T_00356_row0_col12" class="data row0 col12" >64.196</td>
+      <td id="T_00356_row0_col13" class="data row0 col13" >69.876</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_00356_row1_col0" class="data row1 col0" >106_20250114-181558_Lineare_Regression</td>
+      <td id="T_00356_row1_col1" class="data row1 col1" >0.704</td>
+      <td id="T_00356_row1_col2" class="data row1 col2" >64.415</td>
+      <td id="T_00356_row1_col3" class="data row1 col3" >8.026</td>
+      <td id="T_00356_row1_col4" class="data row1 col4" >6.100</td>
+      <td id="T_00356_row1_col5" class="data row1 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_monat', 'monat_jahreszeit', 'rabatt_indexiert']</td>
+      <td id="T_00356_row1_col6" class="data row1 col6" >5.000</td>
+      <td id="T_00356_row1_col7" class="data row1 col7" >59.903</td>
+      <td id="T_00356_row1_col8" class="data row1 col8" >9.047</td>
+      <td id="T_00356_row1_col9" class="data row1 col9" >46.442</td>
+      <td id="T_00356_row1_col10" class="data row1 col10" >55.763</td>
+      <td id="T_00356_row1_col11" class="data row1 col11" >63.241</td>
+      <td id="T_00356_row1_col12" class="data row1 col12" >64.196</td>
+      <td id="T_00356_row1_col13" class="data row1 col13" >69.876</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_00356_row2_col0" class="data row2 col0" >121_20250114-181600_Lineare_Regression</td>
+      <td id="T_00356_row2_col1" class="data row2 col1" >0.703</td>
+      <td id="T_00356_row2_col2" class="data row2 col2" >64.632</td>
+      <td id="T_00356_row2_col3" class="data row2 col3" >8.039</td>
+      <td id="T_00356_row2_col4" class="data row2 col4" >6.061</td>
+      <td id="T_00356_row2_col5" class="data row2 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_monat', 'kohorte_monat', 'monat_jahreszeit', 'rabatt_indexiert']</td>
+      <td id="T_00356_row2_col6" class="data row2 col6" >5.000</td>
+      <td id="T_00356_row2_col7" class="data row2 col7" >60.623</td>
+      <td id="T_00356_row2_col8" class="data row2 col8" >8.250</td>
+      <td id="T_00356_row2_col9" class="data row2 col9" >49.237</td>
+      <td id="T_00356_row2_col10" class="data row2 col10" >54.994</td>
+      <td id="T_00356_row2_col11" class="data row2 col11" >64.614</td>
+      <td id="T_00356_row2_col12" class="data row2 col12" >64.877</td>
+      <td id="T_00356_row2_col13" class="data row2 col13" >69.393</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_00356_row3_col0" class="data row3 col0" >101_20250114-181557_Lineare_Regression</td>
+      <td id="T_00356_row3_col1" class="data row3 col1" >0.703</td>
+      <td id="T_00356_row3_col2" class="data row3 col2" >64.632</td>
+      <td id="T_00356_row3_col3" class="data row3 col3" >8.039</td>
+      <td id="T_00356_row3_col4" class="data row3 col4" >6.061</td>
+      <td id="T_00356_row3_col5" class="data row3 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_monat', 'kohorte_monat', 'rabatt_indexiert']</td>
+      <td id="T_00356_row3_col6" class="data row3 col6" >5.000</td>
+      <td id="T_00356_row3_col7" class="data row3 col7" >60.623</td>
+      <td id="T_00356_row3_col8" class="data row3 col8" >8.250</td>
+      <td id="T_00356_row3_col9" class="data row3 col9" >49.237</td>
+      <td id="T_00356_row3_col10" class="data row3 col10" >54.994</td>
+      <td id="T_00356_row3_col11" class="data row3 col11" >64.614</td>
+      <td id="T_00356_row3_col12" class="data row3 col12" >64.877</td>
+      <td id="T_00356_row3_col13" class="data row3 col13" >69.393</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_00356_row4_col0" class="data row4 col0" >127_20250114-181601_Lineare_Regression</td>
+      <td id="T_00356_row4_col1" class="data row4 col1" >0.703</td>
+      <td id="T_00356_row4_col2" class="data row4 col2" >64.632</td>
+      <td id="T_00356_row4_col3" class="data row4 col3" >8.039</td>
+      <td id="T_00356_row4_col4" class="data row4 col4" >6.061</td>
+      <td id="T_00356_row4_col5" class="data row4 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_monat', 'kohorte_monat', 'monat_jahreszeit', 'kohorte_jahreszeit', 'rabatt_indexiert']</td>
+      <td id="T_00356_row4_col6" class="data row4 col6" >5.000</td>
+      <td id="T_00356_row4_col7" class="data row4 col7" >60.623</td>
+      <td id="T_00356_row4_col8" class="data row4 col8" >8.250</td>
+      <td id="T_00356_row4_col9" class="data row4 col9" >49.237</td>
+      <td id="T_00356_row4_col10" class="data row4 col10" >54.994</td>
+      <td id="T_00356_row4_col11" class="data row4 col11" >64.614</td>
+      <td id="T_00356_row4_col12" class="data row4 col12" >64.877</td>
+      <td id="T_00356_row4_col13" class="data row4 col13" >69.393</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_00356_row5_col0" class="data row5 col0" >122_20250114-181600_Lineare_Regression</td>
+      <td id="T_00356_row5_col1" class="data row5 col1" >0.703</td>
+      <td id="T_00356_row5_col2" class="data row5 col2" >64.633</td>
+      <td id="T_00356_row5_col3" class="data row5 col3" >8.039</td>
+      <td id="T_00356_row5_col4" class="data row5 col4" >6.061</td>
+      <td id="T_00356_row5_col5" class="data row5 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_monat', 'kohorte_monat', 'kohorte_jahreszeit', 'rabatt_indexiert']</td>
+      <td id="T_00356_row5_col6" class="data row5 col6" >5.000</td>
+      <td id="T_00356_row5_col7" class="data row5 col7" >60.623</td>
+      <td id="T_00356_row5_col8" class="data row5 col8" >8.250</td>
+      <td id="T_00356_row5_col9" class="data row5 col9" >49.237</td>
+      <td id="T_00356_row5_col10" class="data row5 col10" >54.994</td>
+      <td id="T_00356_row5_col11" class="data row5 col11" >64.614</td>
+      <td id="T_00356_row5_col12" class="data row5 col12" >64.877</td>
+      <td id="T_00356_row5_col13" class="data row5 col13" >69.393</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_00356_row6_col0" class="data row6 col0" >70_20250114-181553_Lineare_Regression</td>
+      <td id="T_00356_row6_col1" class="data row6 col1" >0.703</td>
+      <td id="T_00356_row6_col2" class="data row6 col2" >64.733</td>
+      <td id="T_00356_row6_col3" class="data row6 col3" >8.046</td>
+      <td id="T_00356_row6_col4" class="data row6 col4" >6.164</td>
+      <td id="T_00356_row6_col5" class="data row6 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_monat', 'rabatt_indexiert']</td>
+      <td id="T_00356_row6_col6" class="data row6 col6" >5.000</td>
+      <td id="T_00356_row6_col7" class="data row6 col7" >60.365</td>
+      <td id="T_00356_row6_col8" class="data row6 col8" >9.323</td>
+      <td id="T_00356_row6_col9" class="data row6 col9" >45.949</td>
+      <td id="T_00356_row6_col10" class="data row6 col10" >56.984</td>
+      <td id="T_00356_row6_col11" class="data row6 col11" >63.997</td>
+      <td id="T_00356_row6_col12" class="data row6 col12" >64.718</td>
+      <td id="T_00356_row6_col13" class="data row6 col13" >70.176</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_00356_row7_col0" class="data row7 col0" >107_20250114-181558_Lineare_Regression</td>
+      <td id="T_00356_row7_col1" class="data row7 col1" >0.703</td>
+      <td id="T_00356_row7_col2" class="data row7 col2" >64.733</td>
+      <td id="T_00356_row7_col3" class="data row7 col3" >8.046</td>
+      <td id="T_00356_row7_col4" class="data row7 col4" >6.164</td>
+      <td id="T_00356_row7_col5" class="data row7 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_monat', 'kohorte_jahreszeit', 'rabatt_indexiert']</td>
+      <td id="T_00356_row7_col6" class="data row7 col6" >5.000</td>
+      <td id="T_00356_row7_col7" class="data row7 col7" >60.365</td>
+      <td id="T_00356_row7_col8" class="data row7 col8" >9.323</td>
+      <td id="T_00356_row7_col9" class="data row7 col9" >45.949</td>
+      <td id="T_00356_row7_col10" class="data row7 col10" >56.984</td>
+      <td id="T_00356_row7_col11" class="data row7 col11" >63.997</td>
+      <td id="T_00356_row7_col12" class="data row7 col12" >64.718</td>
+      <td id="T_00356_row7_col13" class="data row7 col13" >70.176</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_00356_row8_col0" class="data row8 col0" >105_20250114-181558_Lineare_Regression</td>
+      <td id="T_00356_row8_col1" class="data row8 col1" >0.702</td>
+      <td id="T_00356_row8_col2" class="data row8 col2" >65.031</td>
+      <td id="T_00356_row8_col3" class="data row8 col3" >8.064</td>
+      <td id="T_00356_row8_col4" class="data row8 col4" >6.384</td>
+      <td id="T_00356_row8_col5" class="data row8 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_monat', 'monat_jahreszeit', 'kohorte_jahreszeit']</td>
+      <td id="T_00356_row8_col6" class="data row8 col6" >5.000</td>
+      <td id="T_00356_row8_col7" class="data row8 col7" >62.401</td>
+      <td id="T_00356_row8_col8" class="data row8 col8" >8.482</td>
+      <td id="T_00356_row8_col9" class="data row8 col9" >50.090</td>
+      <td id="T_00356_row8_col10" class="data row8 col10" >60.385</td>
+      <td id="T_00356_row8_col11" class="data row8 col11" >61.634</td>
+      <td id="T_00356_row8_col12" class="data row8 col12" >66.976</td>
+      <td id="T_00356_row8_col13" class="data row8 col13" >72.920</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_00356_row9_col0" class="data row9 col0" >68_20250114-181553_Lineare_Regression</td>
+      <td id="T_00356_row9_col1" class="data row9 col1" >0.702</td>
+      <td id="T_00356_row9_col2" class="data row9 col2" >65.031</td>
+      <td id="T_00356_row9_col3" class="data row9 col3" >8.064</td>
+      <td id="T_00356_row9_col4" class="data row9 col4" >6.384</td>
+      <td id="T_00356_row9_col5" class="data row9 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_monat', 'monat_jahreszeit']</td>
+      <td id="T_00356_row9_col6" class="data row9 col6" >5.000</td>
+      <td id="T_00356_row9_col7" class="data row9 col7" >62.401</td>
+      <td id="T_00356_row9_col8" class="data row9 col8" >8.482</td>
+      <td id="T_00356_row9_col9" class="data row9 col9" >50.090</td>
+      <td id="T_00356_row9_col10" class="data row9 col10" >60.385</td>
+      <td id="T_00356_row9_col11" class="data row9 col11" >61.634</td>
+      <td id="T_00356_row9_col12" class="data row9 col12" >66.976</td>
+      <td id="T_00356_row9_col13" class="data row9 col13" >72.920</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_00356_row10_col0" class="data row10 col0" >69_20250114-181553_Lineare_Regression</td>
+      <td id="T_00356_row10_col1" class="data row10 col1" >0.700</td>
+      <td id="T_00356_row10_col2" class="data row10 col2" >65.371</td>
+      <td id="T_00356_row10_col3" class="data row10 col3" >8.085</td>
+      <td id="T_00356_row10_col4" class="data row10 col4" >6.425</td>
+      <td id="T_00356_row10_col5" class="data row10 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_monat', 'kohorte_jahreszeit']</td>
+      <td id="T_00356_row10_col6" class="data row10 col6" >5.000</td>
+      <td id="T_00356_row10_col7" class="data row10 col7" >62.832</td>
+      <td id="T_00356_row10_col8" class="data row10 col8" >8.529</td>
+      <td id="T_00356_row10_col9" class="data row10 col9" >49.558</td>
+      <td id="T_00356_row10_col10" class="data row10 col10" >61.609</td>
+      <td id="T_00356_row10_col11" class="data row10 col11" >63.155</td>
+      <td id="T_00356_row10_col12" class="data row10 col12" >67.399</td>
+      <td id="T_00356_row10_col13" class="data row10 col13" >72.441</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_00356_row11_col0" class="data row11 col0" >30_20250114-181548_Lineare_Regression</td>
+      <td id="T_00356_row11_col1" class="data row11 col1" >0.700</td>
+      <td id="T_00356_row11_col2" class="data row11 col2" >65.371</td>
+      <td id="T_00356_row11_col3" class="data row11 col3" >8.085</td>
+      <td id="T_00356_row11_col4" class="data row11 col4" >6.425</td>
+      <td id="T_00356_row11_col5" class="data row11 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'kohorte_monat']</td>
+      <td id="T_00356_row11_col6" class="data row11 col6" >5.000</td>
+      <td id="T_00356_row11_col7" class="data row11 col7" >62.832</td>
+      <td id="T_00356_row11_col8" class="data row11 col8" >8.529</td>
+      <td id="T_00356_row11_col9" class="data row11 col9" >49.558</td>
+      <td id="T_00356_row11_col10" class="data row11 col10" >61.609</td>
+      <td id="T_00356_row11_col11" class="data row11 col11" >63.155</td>
+      <td id="T_00356_row11_col12" class="data row11 col12" >67.399</td>
+      <td id="T_00356_row11_col13" class="data row11 col13" >72.441</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_00356_row12_col0" class="data row12 col0" >100_20250114-181557_Lineare_Regression</td>
+      <td id="T_00356_row12_col1" class="data row12 col1" >0.700</td>
+      <td id="T_00356_row12_col2" class="data row12 col2" >65.422</td>
+      <td id="T_00356_row12_col3" class="data row12 col3" >8.088</td>
+      <td id="T_00356_row12_col4" class="data row12 col4" >6.355</td>
+      <td id="T_00356_row12_col5" class="data row12 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_monat', 'kohorte_monat', 'kohorte_jahreszeit']</td>
+      <td id="T_00356_row12_col6" class="data row12 col6" >5.000</td>
+      <td id="T_00356_row12_col7" class="data row12 col7" >62.763</td>
+      <td id="T_00356_row12_col8" class="data row12 col8" >7.155</td>
+      <td id="T_00356_row12_col9" class="data row12 col9" >53.153</td>
+      <td id="T_00356_row12_col10" class="data row12 col10" >59.351</td>
+      <td id="T_00356_row12_col11" class="data row12 col11" >62.669</td>
+      <td id="T_00356_row12_col12" class="data row12 col12" >66.605</td>
+      <td id="T_00356_row12_col13" class="data row12 col13" >72.036</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_00356_row13_col0" class="data row13 col0" >120_20250114-181600_Lineare_Regression</td>
+      <td id="T_00356_row13_col1" class="data row13 col1" >0.700</td>
+      <td id="T_00356_row13_col2" class="data row13 col2" >65.422</td>
+      <td id="T_00356_row13_col3" class="data row13 col3" >8.088</td>
+      <td id="T_00356_row13_col4" class="data row13 col4" >6.355</td>
+      <td id="T_00356_row13_col5" class="data row13 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_monat', 'kohorte_monat', 'monat_jahreszeit', 'kohorte_jahreszeit']</td>
+      <td id="T_00356_row13_col6" class="data row13 col6" >5.000</td>
+      <td id="T_00356_row13_col7" class="data row13 col7" >62.763</td>
+      <td id="T_00356_row13_col8" class="data row13 col8" >7.155</td>
+      <td id="T_00356_row13_col9" class="data row13 col9" >53.153</td>
+      <td id="T_00356_row13_col10" class="data row13 col10" >59.351</td>
+      <td id="T_00356_row13_col11" class="data row13 col11" >62.669</td>
+      <td id="T_00356_row13_col12" class="data row13 col12" >66.605</td>
+      <td id="T_00356_row13_col13" class="data row13 col13" >72.036</td>
+    </tr>
+    <tr>
+      <th id="T_00356_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_00356_row14_col0" class="data row14 col0" >99_20250114-181557_Lineare_Regression</td>
+      <td id="T_00356_row14_col1" class="data row14 col1" >0.700</td>
+      <td id="T_00356_row14_col2" class="data row14 col2" >65.422</td>
+      <td id="T_00356_row14_col3" class="data row14 col3" >8.088</td>
+      <td id="T_00356_row14_col4" class="data row14 col4" >6.355</td>
+      <td id="T_00356_row14_col5" class="data row14 col5" >['erster_monat_kohorte_fg', 'monate_seit_einfuehrung_programm_kohorte', 'monat_monat', 'kohorte_monat', 'monat_jahreszeit']</td>
+      <td id="T_00356_row14_col6" class="data row14 col6" >5.000</td>
+      <td id="T_00356_row14_col7" class="data row14 col7" >62.763</td>
+      <td id="T_00356_row14_col8" class="data row14 col8" >7.155</td>
+      <td id="T_00356_row14_col9" class="data row14 col9" >53.153</td>
+      <td id="T_00356_row14_col10" class="data row14 col10" >59.351</td>
+      <td id="T_00356_row14_col11" class="data row14 col11" >62.669</td>
+      <td id="T_00356_row14_col12" class="data row14 col12" >66.605</td>
+      <td id="T_00356_row14_col13" class="data row14 col13" >72.036</td>
+    </tr>
+  </tbody>
+</table>
