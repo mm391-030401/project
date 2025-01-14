@@ -1,0 +1,7 @@
+Name,Coefficient
+Intercept,56.643
+sin_monat_monat,-1.306
+cos_monat_monat,1.527
+monat_jahreszeit_Herbst,-0.267
+monat_jahreszeit_Sommer,-2.6
+monat_jahreszeit_Winter,-1.567

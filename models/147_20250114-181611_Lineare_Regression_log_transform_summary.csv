@@ -1,0 +1,16 @@
+Name,Coefficient
+Intercept,-3283659060253.295
+monat_monat_10,-4026558508364.504
+monat_monat_11,-4026558508364.527
+monat_monat_12,0.069
+monat_monat_2,-0.007
+monat_monat_3,3283659060257.318
+monat_monat_4,3283659060257.278
+monat_monat_5,3283659060257.262
+monat_monat_6,2439624480197.226
+monat_monat_7,2439624480197.222
+monat_monat_8,2439624480197.188
+monat_monat_9,-4026558508364.544
+monat_jahreszeit_Herbst,7310217568621.832
+monat_jahreszeit_Sommer,844034580060.017
+monat_jahreszeit_Winter,3283659060257.278

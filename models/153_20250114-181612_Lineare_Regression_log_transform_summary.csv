@@ -1,0 +1,8 @@
+Name,Coefficient
+Intercept,3.943
+monat_jahreszeit_Herbst,0.018
+monat_jahreszeit_Sommer,-0.061
+monat_jahreszeit_Winter,0.013
+kohorte_jahreszeit_Herbst,0.119
+kohorte_jahreszeit_Sommer,0.107
+kohorte_jahreszeit_Winter,-0.036

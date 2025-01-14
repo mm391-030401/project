@@ -1,0 +1,6 @@
+Name,Coefficient
+Intercept,59.315
+monate_seit_einfuehrung_programm_kohorte,-0.419
+sin_kohorte_monat,-3.64
+sin_monat_monat,-0.484
+cos_monat_monat,1.437

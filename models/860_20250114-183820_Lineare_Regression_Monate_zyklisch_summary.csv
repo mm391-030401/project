@@ -1,0 +1,11 @@
+Name,Coefficient
+Intercept,58.558
+erster_monat_kohorte_fg,51.005
+monate_seit_einfuehrung_programm_kohorte,-0.652
+rabatt_indexiert,0.007
+cos_kohorte_monat,-4.762
+sin_monat_monat,0.572
+cos_monat_monat,1.724
+monat_jahreszeit_Herbst,0.286
+monat_jahreszeit_Sommer,0.092
+monat_jahreszeit_Winter,-0.342

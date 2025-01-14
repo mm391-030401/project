@@ -1,0 +1,7 @@
+Name,Coefficient
+Intercept,58.4
+monate_seit_einfuehrung_programm_kohorte,-0.381
+rabatt_indexiert,0.006
+sin_kohorte_monat,-3.077
+sin_monat_monat,-0.483
+cos_monat_monat,1.428

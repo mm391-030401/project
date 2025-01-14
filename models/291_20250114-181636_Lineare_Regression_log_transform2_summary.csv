@@ -1,0 +1,15 @@
+Name,Coefficient
+Intercept,3.934
+erster_monat_kohorte_fg,0.667
+rabatt_indexiert,0.0
+monat_monat_10,0.026
+monat_monat_11,0.009
+monat_monat_12,0.052
+monat_monat_2,-0.008
+monat_monat_3,0.014
+monat_monat_4,-0.014
+monat_monat_5,-0.022
+monat_monat_6,-0.036
+monat_monat_7,-0.039
+monat_monat_8,-0.085
+monat_monat_9,-0.015

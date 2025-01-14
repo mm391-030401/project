@@ -1,0 +1,8 @@
+Name,Coefficient
+Intercept,52.791
+cos_kohorte_monat,-6.572
+sin_monat_monat,-0.417
+cos_monat_monat,2.087
+kohorte_jahreszeit_Herbst,6.472
+kohorte_jahreszeit_Sommer,0.809
+kohorte_jahreszeit_Winter,3.387

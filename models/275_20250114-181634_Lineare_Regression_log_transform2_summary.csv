@@ -1,0 +1,16 @@
+Name,Coefficient
+Intercept,3.931
+monat_monat_10,0.055
+monat_monat_11,0.028
+monat_monat_12,0.064
+monat_monat_2,0.008
+monat_monat_3,0.041
+monat_monat_4,0.006
+monat_monat_5,-0.005
+monat_monat_6,-0.038
+monat_monat_7,-0.037
+monat_monat_8,-0.071
+monat_monat_9,0.008
+kohorte_jahreszeit_Herbst,0.118
+kohorte_jahreszeit_Sommer,0.107
+kohorte_jahreszeit_Winter,-0.035

@@ -1,0 +1,14 @@
+Name,Coefficient
+Intercept,3.968
+rabatt_indexiert,0.0
+monat_monat_10,0.053
+monat_monat_11,0.012
+monat_monat_12,0.051
+monat_monat_2,-0.008
+monat_monat_3,0.027
+monat_monat_4,-0.01
+monat_monat_5,-0.021
+monat_monat_6,-0.044
+monat_monat_7,-0.041
+monat_monat_8,-0.075
+monat_monat_9,0.006

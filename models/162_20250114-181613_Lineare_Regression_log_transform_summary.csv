@@ -1,0 +1,17 @@
+Name,Coefficient
+Intercept,-3766925278536.379
+erster_monat_kohorte_fg,0.657
+monat_monat_10,-3689645714850.366
+monat_monat_11,-3689645714850.391
+monat_monat_12,0.05
+monat_monat_2,-0.027
+monat_monat_3,3766925278540.354
+monat_monat_4,3766925278540.33
+monat_monat_5,3766925278540.318
+monat_monat_6,-8352125289329.588
+monat_monat_7,-8352125289329.596
+monat_monat_8,-8352125289329.646
+monat_monat_9,-3689645714850.416
+monat_jahreszeit_Herbst,7456570993390.741
+monat_jahreszeit_Sommer,12119050567869.883
+monat_jahreszeit_Winter,3766925278540.341

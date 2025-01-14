@@ -1,0 +1,8 @@
+Name,Coefficient
+Intercept,62.747
+monate_seit_einfuehrung_programm_kohorte,-0.373
+rabatt_indexiert,0.007
+sin_kohorte_monat,-6.798
+kohorte_jahreszeit_Herbst,-8.376
+kohorte_jahreszeit_Sommer,-0.667
+kohorte_jahreszeit_Winter,-9.404

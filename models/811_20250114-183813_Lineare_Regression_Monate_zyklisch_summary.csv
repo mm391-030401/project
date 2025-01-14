@@ -1,0 +1,10 @@
+Name,Coefficient
+Intercept,51.917
+erster_monat_kohorte_fg,46.92
+rabatt_indexiert,0.013
+cos_kohorte_monat,-4.851
+sin_monat_monat,0.063
+cos_monat_monat,1.217
+monat_jahreszeit_Herbst,0.443
+monat_jahreszeit_Sommer,-1.492
+monat_jahreszeit_Winter,0.26

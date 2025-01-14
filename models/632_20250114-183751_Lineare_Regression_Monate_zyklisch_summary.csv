@@ -1,0 +1,6 @@
+Name,Coefficient
+Intercept,54.202
+rabatt_indexiert,0.009
+sin_kohorte_monat,-3.586
+cos_kohorte_monat,-5.342
+sin_monat_monat,-0.272

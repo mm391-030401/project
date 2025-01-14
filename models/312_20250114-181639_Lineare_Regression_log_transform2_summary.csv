@@ -1,0 +1,17 @@
+Name,Coefficient
+Intercept,3.963
+rabatt_indexiert,0.0
+monat_monat_10,0.037
+monat_monat_11,-0.004
+monat_monat_12,0.051
+monat_monat_2,-0.008
+monat_monat_3,0.032
+monat_monat_4,-0.005
+monat_monat_5,-0.016
+monat_monat_6,-0.003
+monat_monat_7,-0.0
+monat_monat_8,-0.034
+monat_monat_9,-0.011
+monat_jahreszeit_Herbst,0.021
+monat_jahreszeit_Sommer,-0.037
+monat_jahreszeit_Winter,0.005

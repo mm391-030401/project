@@ -1,0 +1,5 @@
+Name,Coefficient
+Intercept,55.018
+sin_kohorte_monat,-4.757
+sin_monat_monat,-0.769
+cos_monat_monat,1.755
