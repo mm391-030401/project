@@ -705,8 +705,57 @@ def generate_final_df(model_names_list, top_n=15, sort_column='R_squared', sort 
     # Linksbündige Darstellung des Texts in allen Spalten
     styled_final_df = styled_final_df.set_properties(**{'text-align': 'left'})
 
-
-
     return styled_final_df
 
+def add_cyclic_features(data, columns, cycle_length=12):
+    """
+    Fügt zyklische Kodierungen (Sinus und Cosinus) für angegebene Spalten eines DataFrames hinzu.
 
+    Args:
+        data (pd.DataFrame): Der DataFrame, der die zu kodierenden Spalten enthält.
+        columns (list of str): Liste der Spaltennamen, die zyklisch kodiert werden sollen.
+        cycle_length (int, optional): Die Länge des Zyklus, z. B. 12 für Monate im Jahr. Standard ist 12.
+
+    Returns:
+        pd.DataFrame: Der DataFrame mit den hinzugefügten zyklischen Kodierungen.
+    """
+    for column in columns:
+        data[f'sin_{column}'] = np.sin(2 * np.pi * (data[column] - 1) / cycle_length)
+        data[f'cos_{column}'] = np.cos(2 * np.pi * (data[column] - 1) / cycle_length)
+    return data
+
+
+def save_styled_dataframe(styled_df, filepath):
+    """
+    Speichert ein Pandas-Styler-Objekt als HTML-Datei.
+
+    Args:
+        styled_df (pd.io.formats.style.Styler): Das zu speichernde Styler-Objekt.
+        filepath (str): Der Pfad, unter dem die HTML-Datei gespeichert wird.
+
+    Returns:
+        None
+    """
+    # Konvertiere das Styler-Objekt in HTML
+    html = styled_df.to_html()
+
+    # Schreibe das HTML in die Datei
+    with open(filepath, 'w') as f:
+        f.write(html)
+
+def load_styled_dataframe(filepath):
+    """
+    Lädt ein gespeichertes HTML-Styler-Objekt und gibt es zur Anzeige zurück.
+
+    Args:
+        filepath (str): Der Pfad zur gespeicherten HTML-Datei.
+
+    Returns:
+        IPython.core.display.HTML: Das geladene Styler-Objekt zur Anzeige.
+    """
+    # Lade das HTML aus der Datei
+    with open(filepath, 'r') as f:
+        html = f.read()
+
+    # Gib das HTML zur Anzeige zurück
+    return HTML(html)
