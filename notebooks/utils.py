@@ -37,6 +37,121 @@ MODELS_DIR = PROJECT_DIR / "models"  # models-Ordner relativ zur Wurzel
 # Sicherstellen, dass der Ordner existiert
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
+
+# Funktionen für die Datentransformation
+
+def left(val, n = 4):
+    '''
+    Extrahiert die ersten n-Zeichen eines Strings.
+
+    Args:
+    val (str): Der Eingabestring.
+    n (int): Die Anzahl der zu extrahierenden Zeichen von links. Standardwert ist 4. 
+        Der Standardwert wurde gewählt, da die Funktion vorwiegend dafür da ist, 
+        das Jahr aus einer Spalte im JJJJMM-Format zu extrahieren.
+
+    Returns:
+    str: Die ersten n-Zeichen des Eingabestrings.
+    '''
+
+    return val[:n]
+
+def right(val, n = 2):
+    '''
+    Extrahiert die letzten n-Zeichen eines Strings.
+
+    Args:
+    val (str): Der Eingabestring.
+    n (int): Die Anzahl der zu extrahierenden Zeichen von rechts. Standardwert ist 2. 
+        Der Standardwert wurde gewählt, da die Funktion vorwiegend dafür da ist, 
+        den Monat aus einer Spalte im JJJJMM-Format zu extrahieren.
+
+    Returns:
+    str: Die letzten n-Zeichen des Eingabestrings.
+    '''
+
+    return val[-n:]
+
+def get_season(month):
+    '''
+    Ordnet den angegebenen Monat der entsprechenden Jahreszeit zu. 
+    
+    Diese Funktion nimmt einen Monat als Integer und gibt die Jahreszeit zurück, 
+    zu der der Monat gehört. Die Einteilung erfolgt nach folgenden Kriterien: 
+    - Dezember, Januar, Februar: Winter 
+    - März, April, Mai: Frühling 
+    - Juni, Juli, August: Sommer 
+    - September, Oktober, November: Herbst 
+    
+    Args: 
+    month (int): Der Monat als Integer (1 bis 12). 
+    
+    Returns: 
+    str: Die Jahreszeit ('Winter', 'Frühling', 'Sommer', 'Herbst')
+    '''
+    if month in [12, 1, 2]:
+        return 'Winter'
+    elif month in [3, 4, 5]:
+        return 'Frühling'
+    elif month in [6, 7, 8]:
+        return 'Sommer'
+    elif month in [9, 10, 11]:
+        return 'Herbst'
+
+def add_cyclic_features(data, columns, cycle_length=12):
+    '''
+    Fügt zyklische Kodierungen (Sinus und Cosinus) für angegebene Spalten eines DataFrames hinzu.
+
+    Args:
+        data (pd.DataFrame): Der DataFrame, der die zu kodierenden Spalten enthält.
+        columns (list of str): Liste der Spaltennamen, die zyklisch kodiert werden sollen.
+        cycle_length (int, optional): Die Länge des Zyklus, z. B. 12 für Monate im Jahr. Standard ist 12.
+
+    Returns:
+        pd.DataFrame: Der DataFrame mit den hinzugefügten zyklischen Kodierungen.
+    '''
+    for column in columns:
+        data[f'sin_{column}'] = np.sin(2 * np.pi * (data[column] - 1) / cycle_length)
+        data[f'cos_{column}'] = np.cos(2 * np.pi * (data[column] - 1) / cycle_length)
+    return data
+
+
+# Funktionen zur Formatierung
+
+def rearrange_col(df, startpoint_column, rearrange_columns, inbetween=1):
+    '''
+    Strukturiert das DataFrame um, indem mehrere Spalten an neue Positionen verschoben werden.
+
+    Diese Funktion nimmt ein DataFrame als Eingabe und verschiebt mehrere Spalten an neue Positionen,
+    basierend auf einer angegebenen Startspalte und einem optionalen Abstand.
+
+    Args:
+    df (pd.DataFrame): Das DataFrame, das umstrukturiert werden soll.
+    startpoint_column (str): Der Name der Spalte, deren Position als Ausgangspunkt genommen wird.
+    rearrange_columns (list): Eine Liste der Spaltennamen, die umstrukturiert werden sollen.
+    inbetween (int, optional): Die Anzahl der Spalten, die die umstrukturierten Spalten nach der Ausgangsspalte einnehmen sollen. Standard ist 1.
+
+    Returns:
+    pd.DataFrame: Das umstrukturierte DataFrame.
+    '''
+    
+    # Bestimmt die Position der Ausgangsspalte
+    starting_point = df.columns.get_loc(startpoint_column)
+    
+    # Erstellt eine Liste aller Spaltennamen
+    columns = df.columns.tolist()
+    
+     # Entfernt die umstrukturierten Spalten aus der Liste
+    for col in rearrange_columns:
+        columns.remove(col)
+    
+    # Fügt die umstrukturierten Spalten an den neuen Positionen wieder ein
+    for i, col in enumerate(rearrange_columns):
+        columns.insert(starting_point + inbetween + i, col)
+    
+    # Gibt das umstrukturierte DataFrame zurück
+    return df[columns]
+
 def format_long_text(val): 
     '''
     Formatierte Darstellung von langen Texten in einer DataFrame-Spalte, um Zeilenumbrüche zu ermöglichen.
@@ -99,6 +214,9 @@ def create_highlight_func(df, color1, color2):
 
     return partial(highlight_rows, first_indices=first_indices, last_indices=last_indices, color1=color1, color2=color2)
 
+
+# Funktionen zur Berechnung von Korrelationen
+
 def calc_corr(df, y, x, method='spearman'):
     '''
     Berechnet die Korrelation zwischen der Zielvariablen (y) und einer angegebenen Variable
@@ -107,7 +225,7 @@ def calc_corr(df, y, x, method='spearman'):
     Args:
     df (pandas.DataFrame): Der DataFrame, der die Daten enthält.
     y (str): Der Name der Zielvariablen.
-    vx (str): Der Name der anderen Variable, mit der die Korrelation berechnet werden soll.
+    x (str): Der Name der anderen Variable, mit der die Korrelation berechnet werden soll.
     method (str, optional): Die Methode zur Berechnung der Korrelation. Standardwert ist 'spearman'.
                             Mögliche Werte sind 'spearman', 'pearson' und andere Methoden, die von pandas .corr() unterstützt werden.
     
@@ -120,6 +238,8 @@ def calc_corr(df, y, x, method='spearman'):
     # Ausgabe der Korrelation
     print(f'Korrelation zwischen {y} und {x} beträgt: {korr}')
 
+
+# Funktionen zur Erstellung von Diagrammen
 
 def create_boxplot_with_count(df, y, x, color1, x_type='N', x_limits=None):
     '''
@@ -179,23 +299,13 @@ def create_boxplot_with_count(df, y, x, color1, x_type='N', x_limits=None):
 
     return combined_chart
 
-def generate_model_names(start_num, num_models, regression_type):
-    model_names = []
-    
-    # Holen des aktuellen Datums und Uhrzeit im gewünschten Format
-    current_timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    
-    for i in range(num_models):
-        # Erzeuge den Modellnamen mit fortlaufender Nummer und Regressionstyp als Variable
-        model_name = f"{str(start_num + i).zfill(2)}_{current_timestamp}_{regression_type}"
-        model_names.append(model_name)
-    
-    return model_names
+
+# Funktionen, die für die spätere Pipeline benötigt werden
 
 def preprocess_data(data, y_label, features, drop_first=True):
     '''
     Bereitet die Daten für das Modell vor, einschließlich One-Hot-Encoding,
-    und vermeidet Multikollinearität durch das Weglassen einer Kategorie pro Feature.
+    und vermeidet Multikollinearität durch das Weglassen einer Kategorie pro Feature, wenn es kategorial ist.
 
     Args:
         data (pd.DataFrame): Der ursprüngliche Datensatz.
@@ -282,6 +392,9 @@ def generate_summary_table(reg, X):
     
     return pd.concat([intercept, slope], ignore_index=True, sort=False).round(3)
 
+
+# Funktionen zur Speicherung von Ergebnissen
+
 def save_validation_results(df_scores, model_name):
     '''
     Speichert die Kreuzvalidierungsergebnisse in einer CSV-Datei.
@@ -323,7 +436,7 @@ def save_residual_plot(residuals_df, model_name):
     print(f'Residualplot gespeichert unter: {file_path}')
 
 def save_model(model, model_name):
-    """
+    '''
     Speichert ein trainiertes Modell in einer .joblib-Datei im Ordner 'models/'.
 
     Args:
@@ -332,13 +445,13 @@ def save_model(model, model_name):
     
     Saves:
         Eine .joblib-Datei im Ordner 'models/' mit dem Namen '{model_name}.joblib'.
-    """
+    '''
     file_path = MODELS_DIR / f"{model_name}.joblib"
     dump(model, file_path)
     print(f"Modell gespeichert unter: {file_path}")
 
 def save_features(features, model_name):
-    """
+    '''
     Speichert die verwendeten Features in einer JSON-Datei im Ordner 'models/'.
 
     Args:
@@ -347,14 +460,14 @@ def save_features(features, model_name):
     
     Saves:
         Eine JSON-Datei im Ordner 'models/' mit dem Namen '{model_name}_features.json'.
-    """
+    '''
     file_path = MODELS_DIR / f"{model_name}_features.json"
     with open(file_path, 'w') as f:
         json.dump(features, f)
     print(f"Features gespeichert unter: {file_path}")
 
 def save_results(y_test, y_pred, model_name):
-    """
+    '''
     Berechnet und speichert die Evaluierungsmesswerte eines Modells in einer CSV-Datei im Ordner 'models/'.
 
     Args:
@@ -364,7 +477,7 @@ def save_results(y_test, y_pred, model_name):
     
     Saves:
         Eine CSV-Datei im Ordner 'models/' mit den Messwerten (R², MSE, RMSE, MAE).
-    """
+    '''
     # Berechnung der Evaluierungsmesswerte
     results = {
         "R_squared": [r2_score(y_test, y_pred)],
@@ -401,8 +514,29 @@ def save_summary_table(reg, X, model_name):
     summary_table.to_csv(file_path, index=False)
     print(f'Zusammenfassungstabelle gespeichert unter: {file_path}')
 
+def save_styled_dataframe(styled_df, filepath):
+    '''
+    Speichert ein Pandas-Styler-Objekt als HTML-Datei.
+
+    Args:
+        styled_df (pd.io.formats.style.Styler): Das zu speichernde Styler-Objekt.
+        filepath (str): Der Pfad, unter dem die HTML-Datei gespeichert wird.
+
+    Returns:
+        None
+    '''
+    # Konvertiere das Styler-Objekt in HTML
+    html = styled_df.to_html()
+
+    # Schreibe das HTML in die Datei
+    with open(filepath, 'w') as f:
+        f.write(html)
+
+
+# Funktionen zum Laden von Ergebnissen
+
 def load_model(model_name):
-    """
+    '''
     Lädt ein gespeichertes Modell aus einer .joblib-Datei im Ordner 'models/'.
 
     Args:
@@ -410,12 +544,12 @@ def load_model(model_name):
     
     Returns:
         Das geladene Modell.
-    """
+    '''
     file_path = MODELS_DIR / f"{model_name}.joblib"
     return load(file_path)
 
 def load_features(model_name):
-    """
+    '''
     Lädt die gespeicherten Features aus einer JSON-Datei im Ordner 'models/'.
 
     Args:
@@ -423,13 +557,13 @@ def load_features(model_name):
     
     Returns:
         list: Die Liste der gespeicherten Feature-Namen.
-    """
+    '''
     file_path = MODELS_DIR / f"{model_name}_features.json"
     with open(file_path, 'r') as f:
         return json.load(f)
 
 def load_results(model_name):
-    """
+    '''
     Lädt die gespeicherten Evaluierungsmesswerte aus einer JSON-Datei im Ordner 'models/'.
 
     Args:
@@ -437,7 +571,7 @@ def load_results(model_name):
     
     Returns:
         dict: Ein Dictionary mit den Evaluierungsmesswerten (R², MSE, RMSE, MAE).
-    """
+    '''
     file_path = MODELS_DIR / f"{model_name}_results.csv"
     
     if os.path.exists(file_path):
@@ -502,6 +636,57 @@ def load_summary_table(model_name):
         print(f"Fehler: Die Datei für die Zusammenfassungstabelle von '{model_name}' wurde nicht gefunden.")
         return None
 
+def load_styled_dataframe(filepath):
+    '''
+    Lädt ein gespeichertes HTML-Styler-Objekt und gibt es zur Anzeige zurück.
+
+    Args:
+        filepath (str): Der Pfad zur gespeicherten HTML-Datei.
+
+    Returns:
+        IPython.core.display.HTML: Das geladene Styler-Objekt zur Anzeige.
+    '''
+    # Lade das HTML aus der Datei
+    with open(filepath, 'r') as f:
+        html = f.read()
+
+    # Gib das HTML zur Anzeige zurück
+    return HTML(html)
+
+
+# Funktionen für die Pipeline
+
+def generate_combinations(strings):
+    '''
+    Generiert alle möglichen Kombinationen von mindestens einem Element aus der gegebenen Liste von Strings.
+    
+    Args:
+        strings (list): Eine Liste von Strings, die die Variablen repräsentieren.
+        
+    Returns:
+        list: Eine Liste von Listen, wobei jede Liste eine Kombination von Strings enthält.
+    '''
+    # Generiere alle möglichen Kombinationen (mindestens eine der Strings)
+    combinations = []
+    for r in range(1, len(strings) + 1):
+        combinations.extend(itertools.combinations(strings, r))
+    
+    # Umwandeln in eine Liste von Listen
+    return [list(comb) for comb in combinations]
+
+def generate_model_names(start_num, num_models, regression_type):
+    model_names = []
+    
+    # Holen des aktuellen Datums und Uhrzeit im gewünschten Format
+    current_timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    
+    for i in range(num_models):
+        # Erzeuge den Modellnamen mit fortlaufender Nummer und Regressionstyp als Variable
+        model_name = f"{str(start_num + i).zfill(2)}_{current_timestamp}_{regression_type}"
+        model_names.append(model_name)
+    
+    return model_names
+
 def full_pipeline(data, y_label, features, model_name, is_log_transformed=False):
     '''
     Führt den gesamten Prozess der Modellbildung und Bewertung durch, mit optionaler logarithmischer Rücktransformation.
@@ -549,10 +734,8 @@ def full_pipeline(data, y_label, features, model_name, is_log_transformed=False)
     save_residual_plot(residuals_df, model_name)
     save_summary_table(reg, X, model_name)
 
-
-    
 def run_full_pipeline_with_featurelist(data, y_label, feature_list, modeltype, start_num, is_log_transformed=False):
-    """
+    '''
     Führt die Pipeline für verschiedene Feature-Sets aus und generiert Modellnamen.
 
     Args:
@@ -565,7 +748,7 @@ def run_full_pipeline_with_featurelist(data, y_label, feature_list, modeltype, s
 
     Returns:
         list: Liste der generierten Modellnamen.
-    """
+    '''
     # Leere Liste für Modellnamen erstellen
     model_names_list= []
     
@@ -588,8 +771,10 @@ def run_full_pipeline_with_featurelist(data, y_label, feature_list, modeltype, s
     return model_names_list
 
 
+# Funktionen für die umfassende Review von Modellen
+
 def generate_results_df(model_names_list):
-    """
+    '''
     Generiert einen kombinierten DataFrame mit den Ergebnissen und Features für eine Liste von Modellen.
 
     Args:
@@ -597,7 +782,7 @@ def generate_results_df(model_names_list):
 
     Returns:
         pd.DataFrame: Ein DataFrame mit den kombinierten Ergebnissen und Features.
-    """
+    '''
 
     # Leere Liste für alle DataFrames erstellen
     all_results = []
@@ -628,7 +813,7 @@ def generate_results_df(model_names_list):
 
 
 def generate_validation_stats_df(model_names_list):
-    """
+    '''
     Generiert einen kombinierten DataFrame mit deskriptiven Statistiken 
     für die Kreuzvalidierungsergebnisse einer Liste von Modellen.
 
@@ -638,7 +823,7 @@ def generate_validation_stats_df(model_names_list):
     Returns:
         pd.DataFrame: Ein DataFrame mit den kombinierten deskriptiven Statistiken,
                       wobei der Modellname als zusätzlicher Index verwendet wird.
-    """
+    '''
 
     # Liste zur Speicherung der Statistiken
     stats_list = []
@@ -667,7 +852,7 @@ def generate_validation_stats_df(model_names_list):
     return combined_stats_df
 
 def generate_final_df(model_names_list, top_n=15, sort_column='R_squared', sort = False):
-    """
+    '''
     Generiert einen formatierten und gestylten DataFrame aus Modell- und Validierungsstatistiken.
 
     Args:
@@ -678,7 +863,7 @@ def generate_final_df(model_names_list, top_n=15, sort_column='R_squared', sort 
 
     Returns:
         pd.io.formats.style.Styler: Ein gestylter DataFrame mit den Top-n Modellen.
-    """
+    '''
 
     # Generiere die Ergebnisse- und Validierungsstatistik-DataFrames
     results_df = generate_results_df(model_names_list)
@@ -713,73 +898,9 @@ def generate_final_df(model_names_list, top_n=15, sort_column='R_squared', sort 
 
     return styled_final_df
 
-def add_cyclic_features(data, columns, cycle_length=12):
-    """
-    Fügt zyklische Kodierungen (Sinus und Cosinus) für angegebene Spalten eines DataFrames hinzu.
-
-    Args:
-        data (pd.DataFrame): Der DataFrame, der die zu kodierenden Spalten enthält.
-        columns (list of str): Liste der Spaltennamen, die zyklisch kodiert werden sollen.
-        cycle_length (int, optional): Die Länge des Zyklus, z. B. 12 für Monate im Jahr. Standard ist 12.
-
-    Returns:
-        pd.DataFrame: Der DataFrame mit den hinzugefügten zyklischen Kodierungen.
-    """
-    for column in columns:
-        data[f'sin_{column}'] = np.sin(2 * np.pi * (data[column] - 1) / cycle_length)
-        data[f'cos_{column}'] = np.cos(2 * np.pi * (data[column] - 1) / cycle_length)
-    return data
 
 
-def save_styled_dataframe(styled_df, filepath):
-    """
-    Speichert ein Pandas-Styler-Objekt als HTML-Datei.
 
-    Args:
-        styled_df (pd.io.formats.style.Styler): Das zu speichernde Styler-Objekt.
-        filepath (str): Der Pfad, unter dem die HTML-Datei gespeichert wird.
 
-    Returns:
-        None
-    """
-    # Konvertiere das Styler-Objekt in HTML
-    html = styled_df.to_html()
 
-    # Schreibe das HTML in die Datei
-    with open(filepath, 'w') as f:
-        f.write(html)
 
-def load_styled_dataframe(filepath):
-    """
-    Lädt ein gespeichertes HTML-Styler-Objekt und gibt es zur Anzeige zurück.
-
-    Args:
-        filepath (str): Der Pfad zur gespeicherten HTML-Datei.
-
-    Returns:
-        IPython.core.display.HTML: Das geladene Styler-Objekt zur Anzeige.
-    """
-    # Lade das HTML aus der Datei
-    with open(filepath, 'r') as f:
-        html = f.read()
-
-    # Gib das HTML zur Anzeige zurück
-    return HTML(html)
-
-def generate_combinations(strings):
-    """
-    Generiert alle möglichen Kombinationen von mindestens einem Element aus der gegebenen Liste von Strings.
-    
-    Args:
-        strings (list): Eine Liste von Strings, die die Variablen repräsentieren.
-        
-    Returns:
-        list: Eine Liste von Listen, wobei jede Liste eine Kombination von Strings enthält.
-    """
-    # Generiere alle möglichen Kombinationen (mindestens eine der Strings)
-    combinations = []
-    for r in range(1, len(strings) + 1):
-        combinations.extend(itertools.combinations(strings, r))
-    
-    # Umwandeln in eine Liste von Listen
-    return [list(comb) for comb in combinations]
