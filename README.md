@@ -1,11 +1,16 @@
 ## My Project Title
 
 
----
+Analyse Retentionrate der Kohorten im Loyalty Program
 
 ### Project description
 
-*Your description here*
+Der Datensatz bezieht sich auf die Entwicklung einzelner Kohorten (Neukundengruppen) im Loyalty Program von Lidl und lässt sich damit grundlegend in das **Forschungsumfelds des Marketings** einordnen, welche sich intensiv mit dem Kundenverhalten auseinandersetzt. Insights in das Kundenverhalten durch Analytics zu schaffen, ist elementar, um die Kunden besser zu verstehen und sie nachfolgend besser im Customer Lifecycle Management beeinflussen zu können.
+
+Das Ziel des Loyalty-Programms besteht darin, das Kundenverhalten in den Filialen so transparent wie möglich zu machen. Je mehr Kunden sich mit der App an der Kasse identifizieren, desto transparenter ist das Kundenverhalten.  
+Es wird erwartet, dass die verschiedenen Kundengruppen (repräsentiert durch die Kohorten) unterschiedlich aktiv sind. Die Hypothese dabei lautet **"Neuere Kohorten haben eine geringe Identifizierungsrate als frühere Kohorten"**. Wenn diese Hypothese sich bestätigen lässt, so lässt sich ableiten, dass ein Grenzwert für die monatliche Anzahl an Kunden existiert. In dem Zuge wäre die Transparenz über das Kundenverhalten limitiert.
+
+Ziel des Projekts ist es ein Modell zu entwickeln, was diese Zusammenhänge zuverlässig abbildet und einen guten Einblick in die Retentionrate der Kohorten gibt.
 
 
 ---
