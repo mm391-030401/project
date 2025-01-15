@@ -9,10 +9,16 @@ dependencies:
   - jupyter
   - jupyter_contrib_nbextensions
   - voila
-  - rise
   - scikit-learn
   - altair
   - vega_datasets
   - matplotlib
   - seaborn
   - statsmodels
+  - numpy
+  - IPython
+  - joblib
+  - pathlib
+  - datetime
+  - itertools
+  - matplotlib-base  # Um Colormap zu unterstützen
